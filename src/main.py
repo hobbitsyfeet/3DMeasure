@@ -1,5 +1,5 @@
-from ui.app import MeasureApp
+from ui.app import CamApp
 
 
 if __name__ == "__main__":
-    MeasureApp().run()
+    CamApp().run()
