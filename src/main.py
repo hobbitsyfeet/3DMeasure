@@ -1,5 +1,6 @@
-from ui.app import CamApp
+from capture.cap import Cap
 
 
 if __name__ == "__main__":
-    CamApp().run()
+    capture = Cap
+    Cap.capture_data()
