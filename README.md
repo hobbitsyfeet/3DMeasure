@@ -3,7 +3,7 @@
 
 Install Point Cloud Library (WINDOWS). Follow the instructions on the [PCL github page](https://github.com/strawlab/python-pcl).
 
-Install the appropriate PCL 1.8.1 for your system.
+Install the appropriate PCL 1.8.1 for your system. (Then Restart your computer)
 
  [Visual Studio 2015 - 32 bit](https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.8.1/PCL-1.8.1-AllInOne-msvc2015-win32.exe)
  
