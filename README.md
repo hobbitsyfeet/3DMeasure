@@ -20,17 +20,8 @@ To get the appropriate pip install, [download the wheel](https://ci.appveyor.com
 
 ### Setup Environment
 
-Follow these steps carefully, doing it wrong can cause errors.
-
-1. Make sure you have PCL_ROOT as a variable:
- 
-        C:Program Files\PCL 1.8.1
-        
-2. I added OPEN_NI2_ROOT as a variable:
-
-        C:\Program Files\OpenNI2
-
-3. I got mine working by adding the bin of both to Path:
+Under User variables for ______, Edit the variable named Path.
+Add both OpenNI2 and PCL to the path, it will look similar to this:
 
         C:\Program Files\OpenNI2\Samples\Bin
         C:\Program Files\PCL 1.8.1\bin
