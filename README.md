@@ -37,6 +37,7 @@ Follow these steps carefully, doing it wrong can cause errors.
 
 ### Pip install the Wheel
 After all this is complete, (replacing XXX by the right string)
+It will, and MUST look something like this: python_pcl-0.3-cp36-cp36m-win_amd64
 
     pip install python_pcl-XXX.whl
     
