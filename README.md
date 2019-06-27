@@ -15,7 +15,7 @@ Install the appropriate PCL 1.8.1 for your system.
 
 
 ### Download the Wheel needed for pip
-To get the appropriate pip install, [download the wheel](https://ci.appveyor.com/project/Sirokujira/python-pcl-iju42/history) (the first green and the appropriate version)
+To get the appropriate pip install, [download the wheel](https://ci.appveyor.com/project/Sirokujira/python-pcl-iju42/history) (the first green and the appropriate version, the download exists under Artifacts)
 
 
 ### Setup Environment
