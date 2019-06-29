@@ -384,6 +384,7 @@ def run(dt):
         return
 
     depth_frame = frames.get_depth_frame()
+    color_frame = frames.get_color_frame()
     other_frame = frames.first(other_stream)
 
     depth_frame = decimate.process(depth_frame)
@@ -399,11 +400,13 @@ def run(dt):
 
     color_image = np.asanyarray(other_frame.get_data())
 
+    color_image2 = np.asanyarray(color_frame.get_data())
+
     colorized_depth = colorizer.colorize(depth_frame)
     depth_colormap = np.asanyarray(colorized_depth.get_data())
 
     if state.color:
-        mapped_frame, color_source = other_frame, color_image
+        mapped_frame, color_source = color_frame, color_image
     else:
         mapped_frame, color_source = colorized_depth, depth_colormap
 
@@ -454,7 +457,8 @@ def run(dt):
         copy(vertex_list.normals, n)
 
     if keys[pyglet.window.key.E]:
-        points.export_to_ply('./out.ply', mapped_frame)
+        print(points)
+        points.export_to_ply("./out.ply", mapped_frame)
 
 
 pyglet.clock.schedule(run)
