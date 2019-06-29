@@ -6,41 +6,115 @@ class Cap():
     def __init__(self):
         pass
 
+    def get_angle(self, p1, p2):
+        '''
+        returns the angles between 2 points (angle between depth data)
+        point format: (x,y,z)
+        '''
+        num = (p1[0]*p2[0] + p1[1]*p2[1] + p1[2] *p2[2])
+        den = (np.sqrt( (p1[0]**2 + p1[1]**2 + p1[2]**2) * (p2[0]**2 + p2[1]**2 + p2[2]**2) ) )
+        return np.arccos((num/den))
+
+    def get_length(self, d1, d2, angle):
+        # calculates distance of the unknown side of a triagle given
+        # 2 sides and the angle between, the angle must be in radians
+        return np.sqrt( d1**2 + d2**2 - (2 * d1 * d2) * np.cos(angle) )
+
+    def euclid_dist(self, p1, p2):
+        return np.sqrt((p1[0] - p2[0])**2 +
+                (p1[1] - p2[0])**2 + 
+                (p1[2] - p2[2])**2
+                )
+
     def capture_data(self):
         """
         """
-        try:
-            # Create a context object. This object owns the handles to all connected realsense devices
-            pipeline = rs2.pipeline()
-            pipeline.start()
+        pipeline = rs2.pipeline()
 
-            # Create opencv window to render image in
-            cv2.namedWindow("Depth Stream", cv2.WINDOW_AUTOSIZE)
+        # Start streaming
+        pipeline.start(config)
+        profile = pipeline.get_active_profile()
 
-            # Streaming loop
-            while True:
-                # Get frameset of depth
-                frames = pipeline.wait_for_frames()
+        depth_sensor = profile.get_device().first_depth_sensor()
+        depth_scale = depth_sensor.get_depth_scale()
 
-                # Get depth frame
-                depth_frame = frames.get_depth_frame()
-                depth_data = frames.get_data()
-                print(depth_data)
-                # Colorize depth frame to jet colormap
-                depth_color_frame = rs2.colorizer().colorize(depth_frame)
+        depth_profile = rs2.video_stream_profile(profile.get_stream(rs2.stream.depth))
+        depth_intrinsics = depth_profile.get_intrinsics()
+        w, h = depth_intrinsics.width, depth_intrinsics.height
 
-                # Convert depth_frame to numpy array to render image in opencv
-                depth_color_image = np.asanyarray(depth_color_frame.get_data())
+        # Processing blocks
+        pc = rs2.pointcloud()
+        decimate = rs2.decimation_filter()
+        colorizer = rs2.colorizer()
+        filters = [rs2.disparity_transform(),
+                rs2.spatial_filter(),
+                rs2.temporal_filter(),
+                rs2.disparity_transform(False)]
+        # Create a context object. This object owns the handles to all connected realsense devices
+        success, frames = pipeline.try_wait_for_frames(timeout_ms=100)
+        if not success:
+            print("exiting")
+            return
+        depth_frame = frames.get_depth_frame()
+        other_frame = frames.first(other_stream)
 
-                # Render image in opencv window
-                cv2.imshow("Depth Stream", depth_color_image)
-                key = cv2.waitKey(1)
-                # if pressed escape exit program
-                if key == 27:
-                    cv2.destroyAllWindows()
-                    break
-        finally:
-            print("goodbye")
+        depth_frame = decimate.process(depth_frame)
+
+        # Grab new intrinsics (may be changed by decimation)
+        depth_intrinsics = rs.video_stream_profile(
+            depth_frame.profile).get_intrinsics()
+        w, h = depth_intrinsics.width, depth_intrinsics.height
+
+        depth_frame = decimate.process(depth_frame)
+
+        for f in filters:
+            depth_frame = f.process(depth_frame)
+
+        # Create opencv window to render image in
+        cv2.namedWindow("Depth Stream", cv2.WINDOW_AUTOSIZE)
+
+        # Streaming loop
+        while True:
+            # Get frameset of depth
+            frames = pipeline.wait_for_frames()
+
+            # Get depth frame
+            depth_frame = frames.get_depth_frame()
+            depth_data = frames.get_data()
+            #distance in meters
+            distance1 = depth_frame.get_distance(200,500)
+            distance2 = depth_frame.get_distance(600,500)
+
+            depth_intrinsics = rs2.video_stream_profile(
+                depth_frame.profile).get_intrinsics()
+            
+            deproject1 = rs2.rs2_deproject_pixel_to_point(depth_intrinsics, [500, 500], distance1)
+            deproject2 = rs2.rs2_deproject_pixel_to_point(depth_intrinsics, [600, 500], distance2)
+
+
+            #print(deproject1)
+            #print(deproject2)
+            #depr = rs2.deproject_pixel_to_pointdeproject_pixel_to_point((500,500), distance)
+            #5print(depr)
+            #print(distance1)
+            #print(distance2)
+
+            dist = self.euclid_dist(deproject1, deproject2)
+            print(dist)
+            # Colorize depth frame to jet colormap
+            depth_color_frame = rs2.colorizer().colorize(depth_frame)
+
+            # Convert depth_frame to numpy array to render image in opencv
+            depth_color_image = np.asanyarray(depth_color_frame.get_data())
+
+            # Render image in opencv window
+            cv2.imshow("Depth Stream", depth_color_image)
+            key = cv2.waitKey(1)
+            # if pressed escape exit program
+            if key == 27:
+                cv2.destroyAllWindows()
+                break
+        print("goodbye")
         
     def capture_colour(self):
         pipeline = rs2.pipeline()
@@ -119,7 +193,7 @@ class Cap():
                     continue
                 
                 depth_image = np.asanyarray(aligned_depth_frame.get_data())
-                color_image = np.asanyarray(color_frame.get_data())
+                #color_image = np.asanyarray(color_frame.get_data())
                 
                 # Remove background - Set pixels further than clipping_distance to grey
                 grey_color = 153

@@ -22,7 +22,7 @@ Keyboard:
     [q/ESC] Quit
 Notes:
 ------
-Using deprecated OpenGL (FFP lighting, matrix stack...) however, draw calls
+Using deprecated OpenGL (FFP lighting, matrix stack...) however, draw calls 
 are kept low with pyglet.graphics.* which uses glDrawArrays internally.
 Normals calculation is done with numpy on CPU which is rather slow, should really
 be done with shaders but was omitted for several reasons - brevity, for lowering
@@ -455,12 +455,11 @@ def run(dt):
 
     if keys[pyglet.window.key.E]:
         points.export_to_ply('./out.ply', mapped_frame)
-        ponts.export_to_ply
 
-if __name__ == "__main__":
-    pyglet.clock.schedule(run)
 
-    try:
-        pyglet.app.run()
-    finally:
-        pipeline.stop()
+pyglet.clock.schedule(run)
+
+try:
+    pyglet.app.run()
+finally:
+    pipeline.stop()

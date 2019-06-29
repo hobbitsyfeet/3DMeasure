@@ -42,6 +42,9 @@ class AppState:
         self.decimate = 1
         self.scale = True
         self.color = True
+        self.postprocessing = False
+
+        self.counter = 1
 
     def reset(self):
         self.pitch, self.yaw, self.distance = 0, 0, 2
@@ -80,6 +83,10 @@ pc = rs.pointcloud()
 decimate = rs.decimation_filter()
 decimate.set_option(rs.option.filter_magnitude, 2 ** state.decimate)
 colorizer = rs.colorizer()
+filters = [rs.disparity_transform(),
+           rs.spatial_filter(),
+           rs.temporal_filter(),
+           rs.disparity_transform(False)]
 
 
 def mouse_cb(event, x, y, flags, param):
@@ -270,6 +277,10 @@ while True:
 
         depth_frame = decimate.process(depth_frame)
 
+        if state.postprocessing is True:
+            for f in filters:
+                depth_frame = f.process(depth_frame)
+
         # Grab new intrinsics (may be changed by decimation)
         depth_intrinsics = rs.video_stream_profile(
             depth_frame.profile).get_intrinsics()
@@ -340,11 +351,16 @@ while True:
     if key == ord("c"):
         state.color ^= True
 
+    if key == ord("f"):
+        state.postprocessing ^= True
+
     if key == ord("s"):
         cv2.imwrite('./out.png', out)
 
     if key == ord("e"):
-        points.export_to_ply('./out.ply', mapped_frame)
+        name = "./out" + str(state.counter) + ".ply"
+        points.export_to_ply(name, mapped_frame)
+        state.counter += 1
 
     if key in (27, ord("q")) or cv2.getWindowProperty(state.WIN_NAME, cv2.WND_PROP_AUTOSIZE) < 0:
         break
