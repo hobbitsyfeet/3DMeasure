@@ -50,6 +50,7 @@ def main():
     ##
     print("creating icp")
     icp = target_cloud.make_IterativeClosestPoint()
+
     # Final = icp.align()
     fitness = 0
     estimate = input_cloud
@@ -65,9 +66,9 @@ def main():
     visual = pcl.pcl_visualization.CloudViewing()
     
     # PointXYZ
-#    visual.ShowMonochromeCloud(estimate, b'cloud1')
- #   visual.ShowMonochromeCloud(target_cloud, b'cloud2')
-  #  visual.ShowMonochromeCloud(input_cloud, b'cloud3')
+    visual.ShowMonochromeCloud(estimate, b'cloud1')
+    visual.ShowMonochromeCloud(target_cloud, b'cloud2')
+    visual.ShowMonochromeCloud(input_cloud, b'cloud3')
 
 
     v = True
@@ -161,6 +162,8 @@ def draw_registration_result(source, target, transformation):
 
 
 if __name__ == "__main__":
+
+    # main()
 
     source_path, source_format = get_file()
     target_path, target_format = get_file()
