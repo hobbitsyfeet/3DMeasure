@@ -13,5 +13,5 @@ def ply2pcd(cloud_path = None):
 
 
 if __name__ == "__main__":
-   ply2pcd()
+    ply2pcd()
    

@@ -176,6 +176,7 @@ def main():
 
         # Show alignment
         visu = pcl.PCLVisualization('Alignment')
+        
         visu.add_PointCloud(scene, ColorHandlerT(
             scene, 0.0, 255.0, 0.0), 'scene')
         visu.add_PointCloud(object_aligned, ColorHandlerT(

@@ -69,6 +69,8 @@ class AppState:
         self.color = True
         self.lighting = False
         self.postprocessing = False
+        self.max_distance = 4.0
+        self.save_index = 0
 
     def reset(self):
         self.pitch, self.yaw, self.distance = 0, 0, 2
@@ -111,6 +113,8 @@ filters = [rs.disparity_transform(),
            rs.spatial_filter(),
            rs.temporal_filter(),
            rs.disparity_transform(False)]
+
+colorizer.set_option(rs.option.max_distance, state.max_distance)
 
 
 # pyglet
@@ -206,6 +210,14 @@ def on_key_press(symbol, modifiers):
 
     if symbol == pyglet.window.key.F:
         state.postprocessing ^= True
+
+    if symbol == pyglet.window.key.U:
+        state.max_distance += 0.5
+        print(state.max_distance)
+
+    if symbol == pyglet.window.key.J:
+        state.max_distance -= 0.5
+        print(state.max_distance)
 
     if symbol == pyglet.window.key.S:
         pyglet.image.get_buffer_manager().get_color_buffer().save('out.png')
@@ -458,7 +470,18 @@ def run(dt):
 
     if keys[pyglet.window.key.E]:
         print(points)
-        points.export_to_ply("./out.ply", mapped_frame)
+        state.save_index += 1
+        save_path = "./out_" + str(state.save_index)
+        print(depth_intrinsics)
+
+        #write intrinsics file
+        
+        intrinsic_file = open((save_path + "_intrinsics.txt"), "w")
+        intrinsic_file.write(str(depth_intrinsics))
+        intrinsic_file.close()
+        #export ply
+        points.export_to_ply((save_path + ".ply"), mapped_frame)
+        
 
 
 pyglet.clock.schedule(run)

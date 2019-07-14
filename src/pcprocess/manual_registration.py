@@ -6,8 +6,13 @@
 
 import numpy as np
 import copy
+
 import open3d as o3d
+import pyrealsense2 as rs2
+
 from load import get_file
+from measure import manual_measure
+
 
 def demo_crop_geometry():
     print("Demo for manual geometry cropping")
@@ -22,6 +27,68 @@ def demo_crop_geometry():
     source_path, source_format = get_file()
     pcd = o3d.io.read_point_cloud(source_path)
     o3d.visualization.draw_geometries_with_editing([pcd])
+
+
+def read_intrinsics(file_path):
+    intrinsics = rs2.intrinsics()
+     
+    intrinsics_file = open(file_path, "r")
+    intr_string = intrinsics_file.read()
+
+    #extract values from file
+    
+    intr_value = intr_string[intr_string.find("width:"):]
+    intrinsics.width = int(intr_value[intr_value.find(":") + 2 :intr_value.find(",")])
+
+    intr_value = intr_string[intr_string.find("height:"):]
+    intrinsics.height = int(intr_value[intr_value.find(":") + 2 :intr_value.find(",")])
+
+        
+    intr_value = intr_string[intr_string.find("ppx:"):]
+    intrinsics.ppx = float(intr_value[intr_value.find(":") + 2 :intr_value.find(",")])
+
+        
+    intr_value = intr_string[intr_string.find("ppy:"):]
+    intrinsics.ppy = float(intr_value[intr_value.find(":") + 2 :intr_value.find(",")])
+
+        
+    intr_value = intr_string[intr_string.find("fx:"):]
+    intrinsics.fx = float(intr_value[intr_value.find(":") + 2 :intr_value.find(",")])
+    
+        
+    intr_value = intr_string[intr_string.find("fy:"):]
+    intrinsics.fy = float(intr_value[intr_value.find(":") + 2 :intr_value.find(",")])
+
+        
+    intr_value = intr_string[intr_string.find("model:"):]
+    intr_model = intr_value[intr_value.find(":") + 2 :intr_value.find(",")]
+    if intr_model == "None":
+        pass
+    if intr_model == "Brown Conrady":
+        intrinsics.model = rs2.distortion.brown_conrady
+    elif intr_model == "Modified Brown Conrady":
+        intrinsics.model = rs2.distortion.modified_brown_conrady
+    elif intr_model == "Inverse Brown Conrady":
+        intrinsics.model = rs2.distortion.inverse_brown_conrady
+        
+
+        
+    intr_value = intr_string[intr_string.find("coeffs:"):]
+    intr_value = intr_value[intr_value.find("[") + 1 : intr_value.find("]")]
+    count = sum(chars.count(",") for chars in intr_value)
+    intr_coeff = []
+    for i in range(5):
+        if intr_value.find(",") is not -1:
+            print(i)
+            print(intr_value)
+            intr_coeff.append(float(intr_value[:intr_value.find(",")]))
+            intr_value = intr_value[intr_value.find(",") + 2:]
+        else:
+            intr_coeff.append(float(intr_value))
+    print(intr_coeff)
+    intrinsics.coeffs = intr_coeff
+
+    return intrinsics
 
 
 def draw_registration_result(source, target, transformation):
@@ -46,6 +113,7 @@ def pick_points(pcd):
     vis.run()  # user picks points
     vis.destroy_window()
     print("")
+    #returns the inices of the users picked points
     return vis.get_picked_points()
 
 
@@ -61,6 +129,7 @@ def demo_manual_registration():
     # pick points from two point clouds and builds correspondences
     picked_id_source = pick_points(source)
     picked_id_target = pick_points(target)
+    print(picked_id_source)
     assert (len(picked_id_source) >= 3 and len(picked_id_target) >= 3)
     assert (len(picked_id_source) == len(picked_id_target))
     corr = np.zeros((len(picked_id_source), 2))
@@ -80,9 +149,23 @@ def demo_manual_registration():
         source, target, threshold, trans_init,
         o3d.registration.TransformationEstimationPointToPoint())
     draw_registration_result(source, target, reg_p2p.transformation)
-    print("")
+    source_temp = copy.deepcopy(source)
+    target_temp = copy.deepcopy(target)
+    # source_temp.paint_uniform_color([1, 0.706, 0])
+    # target_temp.paint_uniform_color([0, 0.651, 0.929])
+    source_temp.transform(reg_p2p.transformation)
+    registered_cloud = source_temp + target_temp
+
+    o3d.io.write_point_cloud("./registered_cloud.pcd", registered_cloud)
+
 
 
 if __name__ == "__main__":
     #demo_crop_geometry()
-    demo_manual_registration()
+    #demo_manual_registration()
+    cloud_path, cloud_format = get_file()
+    cloud = o3d.io.read_point_cloud(cloud_path, format=cloud_format)
+    #intrinsics = read_intrinsics((cloud_path[:-4] + "_intrinsics.txt"))
+    length = manual_measure(cloud)
+    # distance, segments = measure(cloud)
+    #print(segments)

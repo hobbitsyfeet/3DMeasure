@@ -1,7 +1,5 @@
 import pcl
 from pcl import pcl_visualization
-import numpy as np
-import open3d
 from tkinter import filedialog
 from tkinter import Tk
 
@@ -27,7 +25,6 @@ def get_file(file_path = None):
 
 if __name__ == "__main__":
     file_path, file_format = get_file()
-    print("hecc")
 
     cloud = pcl.load(file_path, format=file_format)
     # centred = cloud - np.mean(cloud, 0)

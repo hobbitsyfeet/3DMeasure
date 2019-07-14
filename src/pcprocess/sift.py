@@ -64,7 +64,6 @@ def Extract_SIFT(cloud, cloud_normals):
     n_scales_per_octave = 4
     min_contrast = 0.001
 
-    cloud.
     sift = pclcloud_makeSIFTKeypoint()
     sift.set_SearchMethod(tree)
     sift.set_Scales(min_scale, n_octaves, n_scales_per_octave)
