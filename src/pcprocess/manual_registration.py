@@ -162,10 +162,10 @@ def demo_manual_registration():
 
 if __name__ == "__main__":
     #demo_crop_geometry()
-    #demo_manual_registration()
-    cloud_path, cloud_format = get_file()
-    cloud = o3d.io.read_point_cloud(cloud_path, format=cloud_format)
+    demo_manual_registration()
+    # cloud_path, cloud_format = get_file()
+    # cloud = o3d.io.read_point_cloud(cloud_path, format=cloud_format)
     #intrinsics = read_intrinsics((cloud_path[:-4] + "_intrinsics.txt"))
-    length = manual_measure(cloud)
+    # length = manual_measure(cloud)
     # distance, segments = measure(cloud)
     #print(segments)

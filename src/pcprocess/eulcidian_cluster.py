@@ -2,6 +2,8 @@ import pcl
 import numpy as np
 from load import get_file
 
+
+
 if __name__ == "__main__":
     cloud_path, cloud_format = get_file()
     cloud = pcl.load(cloud_path, format=cloud_format)
