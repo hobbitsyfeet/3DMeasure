@@ -39,7 +39,7 @@ if __name__ == "__main__":
     visual.ShowMonochromeCloud(cloud, b'cloud')
     # visual.ShowGrayCloud(ptcloud_centred, b'cloud')
     # visual.ShowColorCloud(cloud, b'cloud')
-    # visual.ShowColorACloud(ptcloud_centred, b'cloud')
+    # visual.ShowColorACloud(cloud, b'cloud')
 
     v = True
     while v:

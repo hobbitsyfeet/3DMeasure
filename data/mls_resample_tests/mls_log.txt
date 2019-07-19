@@ -1,0 +1,13 @@
+C:/Users/legom/Documents/GitHub/3DMeasure/data/wcan_no_plane.pcd <PointCloud of 87679 points>
+
+Search Radius(m)
+0.01		<PointCloud of 87679 points>
+0.02		<PointCloud of 87688 points>
+0.03		<PointCloud of 87689 points>
+0.04		<PointCloud of 87690 points>
+0.05		<PointCloud of 87690 points>
+0.06		<PointCloud of 87690 points>
+0.07		<PointCloud of 87690 points>
+0.08		<PointCloud of 87690 points>
+0.09		<PointCloud of 87690 points>
+0.1		<PointCloud of 87690 points>

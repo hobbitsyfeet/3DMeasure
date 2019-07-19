@@ -1,4 +1,3 @@
-
 import numpy as np
 import pcl
 import random
@@ -6,6 +5,7 @@ import random
 from load import get_file
 
 import pcl.pcl_visualization
+
 
 
 def plane_segment(cloud):
@@ -22,7 +22,7 @@ def plane_segment(cloud):
     seg.set_normal_distance_weight(0.1)
     seg.set_method_type(pcl.SAC_RANSAC)
     seg.set_max_iterations(100)
-    seg.set_distance_threshold(0.03)
+    seg.set_distance_threshold(0.05)
     # seg.set_InputNormals (cloud_normals)
     [inliers_plane, coefficients_plane] = seg.segment()
 
