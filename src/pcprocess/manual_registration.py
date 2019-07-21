@@ -152,10 +152,10 @@ def register(o3d_source_cloud, o3d_target_cloud):
     # source_temp.paint_uniform_color([1, 0.706, 0])
     # target_temp.paint_uniform_color([0, 0.651, 0.929])
     source_temp.transform(reg_p2p.transformation)
-    registered_cloud = source_temp + target_temp
+    # registered_cloud = source_temp + target_temp
 
-    o3d.io.write_point_cloud("./registered_cloud.pcd", registered_cloud)
-    return registered_cloud
+    
+    return source_temp, target_temp
 
 
 

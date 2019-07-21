@@ -40,7 +40,7 @@ if __name__ == "__main__":
     # visual.ShowGrayCloud(ptcloud_centred, b'cloud')
     visual.ShowColorCloud(cloud, b'cloud')
     # visual.ShowColorACloud(cloud, b'cloud')
-    cloud.make_NormalEstimation()
+    # cloud.make_NormalEstimation()
     v = True
     while v:
         v = not(visual.WasStopped())
