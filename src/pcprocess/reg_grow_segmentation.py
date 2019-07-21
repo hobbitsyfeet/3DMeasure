@@ -16,14 +16,13 @@ def reg_grow_segment(cloud,smoothness, view=True):
     
     print("Creating Region Growing...", end="")
     reg = cloud.make_RegionGrowing(ksearch=50)
-    reg.set_MinClusterSize(100)
+    reg.set_MinClusterSize(25)
     reg.set_MaxClusterSize(1000000)
     reg.set_SearchMethod(tree)
     reg.set_NumberOfNeighbours(200)
 
-    print(smoothness/100)
-    reg.set_SmoothnessThreshold((smoothness/10)/ 180 * np.pi)
-    reg.set_CurvatureThreshold(3.0)
+    reg.set_SmoothnessThreshold(smoothness/ 180 * np.pi)
+    reg.set_CurvatureThreshold(1.0)
     cluster_indices = reg.Extract()
     print("Done.")
     cloud_cluster = pcl.PointCloud()
@@ -64,9 +63,9 @@ def reg_grow_segment(cloud,smoothness, view=True):
     print("Done.")
 
 
-    # while view:
-    #     viewer.Spin()
-    #     view = not(viewer.WasStopped())
+    while view:
+        viewer.Spin()
+        view = not(viewer.WasStopped())
 
     return accumulate_clouds
         
@@ -77,5 +76,5 @@ if __name__ == "__main__":
     
     cloud_path, cloud_format = get_file()
     cloud = pcl.load(cloud_path, cloud_format)
-    for i in range(400):
-        clusters = reg_grow_segment(cloud,i,view=True)
+    # for i in range(400):
+    clusters = reg_grow_segment(cloud,5.5,view=True)
