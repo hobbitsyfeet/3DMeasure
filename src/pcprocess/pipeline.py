@@ -37,23 +37,24 @@ if __name__ =="__main__":
     viewer = pcl.pcl_visualization.CloudViewing()
     cluster_number = 0
     for cluster in cloud_clusters_1:
-        cluster = filter_outliers.stat_filter(cluster)
-        cluster = resample.smooth(cluster, 0.01)
-        viewer.ShowMonochromeCloud(cluster, uuid.uuid4().bytes)
-        cluster_number += 1
-        print(cluster_number)
-        # time.sleep(1)
-        pcl.save(cluster,(save_path + "/"+ str(cluster_number) + "-cluster_cloud1.ply"), format="ply", binary=True)
+        if cluster.size > 0:
+            # cluster = filter_outliers.stat_filter(cluster)
+            # cluster = resample.smooth(cluster, 0.01)
+            viewer.ShowMonochromeCloud(cluster, uuid.uuid4().bytes)
+            cluster_number += 1
+            print(cluster_number)
+            time.sleep(1)
+            pcl.save(cluster,(save_path + "/"+ str(cluster_number) + "-cluster_cloud1.ply"), format="ply", binary=True)
     cluster_number = 0
     for cluster in cloud_clusters_2:
-        cluster = filter_outliers.stat_filter(cluster)
-        cluster = resample.smooth(cluster, 0.01)
-
-        viewer.ShowMonochromeCloud(cluster, uuid.uuid4().bytes)
-        cluster_number += 1
-        print(cluster_number)
-        # time.sleep(1)
-        pcl.save(cluster,(save_path + "/"+ str(cluster_number) + "-cluster_cloud2.ply"), format="ply",binary=True)
+        if cluster.size > 0:
+            # cluster = filter_outliers.stat_filter(cluster)
+            # cluster = resample.smooth(cluster, 0.01)
+            viewer.ShowMonochromeCloud(cluster, uuid.uuid4().bytes)
+            cluster_number += 1
+            print(cluster_number)
+            time.sleep(1)
+            pcl.save(cluster,(save_path + "/"+ str(cluster_number) + "-cluster_cloud2.ply"), format="ply",binary=True)
 
     
     
@@ -91,14 +92,14 @@ if __name__ =="__main__":
     Solution is just reading the text, and re-writing double to float, then pcl can load the files.
     OR can change the datatype before it is saved.
     """
-    regeristered_cloud = pcl.load((save_path + "regeristered_cloud.ply"), format="ply")
-    smoothed_merge = resample.smooth(regeristered_cloud, 0.01)
+    # regeristered_cloud = pcl.load((save_path + "regeristered_cloud.ply"), format="ply")
+    # smoothed_merge = resample.smooth(regeristered_cloud, 0.01)
 
-    pcl.save(smoothed_merge,(save_path + "smoothed_merge.ply"), format="ply")
+    # pcl.save(smoothed_merge,(save_path + "smoothed_merge.ply"), format="ply")
 
-    smoothed_merge = o3d.io.read_point_cloud((save_path + "smoothed_merge.ply"), format="ply")
+    # smoothed_merge = o3d.io.read_point_cloud((save_path + "smoothed_merge.ply"), format="ply")
 
-    measure_cloud.manual_measure(smoothed_merge)
+    measure_cloud.manual_measure(regeristered_cloud)
 
 
     
