@@ -4,7 +4,8 @@ import uuid
 from random import randrange
 from pcl import pcl_visualization
 from load import get_file
-def reg_grow_segment(cloud, view=True):
+from time import sleep
+def reg_grow_segment(cloud,smoothness, view=True):
     
 
     tree = cloud.make_kdtree()
@@ -15,13 +16,14 @@ def reg_grow_segment(cloud, view=True):
     
     print("Creating Region Growing...", end="")
     reg = cloud.make_RegionGrowing(ksearch=50)
-    reg.set_MinClusterSize(20)
+    reg.set_MinClusterSize(100)
     reg.set_MaxClusterSize(1000000)
     reg.set_SearchMethod(tree)
     reg.set_NumberOfNeighbours(200)
 
-    reg.set_SmoothnessThreshold(2.75/ 180 * np.pi)
-    reg.set_CurvatureThreshold(120)
+    print(smoothness/100)
+    reg.set_SmoothnessThreshold((smoothness/10)/ 180 * np.pi)
+    reg.set_CurvatureThreshold(3.0)
     cluster_indices = reg.Extract()
     print("Done.")
     cloud_cluster = pcl.PointCloud()
@@ -60,9 +62,11 @@ def reg_grow_segment(cloud, view=True):
             viewer.SpinOnce()
     print("")
     print("Done.")
-    while view:
-        viewer.Spin()
-        view = not(viewer.WasStopped())
+
+
+    # while view:
+    #     viewer.Spin()
+    #     view = not(viewer.WasStopped())
 
     return accumulate_clouds
         
@@ -73,4 +77,5 @@ if __name__ == "__main__":
     
     cloud_path, cloud_format = get_file()
     cloud = pcl.load(cloud_path, cloud_format)
-    clusters = reg_grow_segment(cloud,view=True)
+    for i in range(400):
+        clusters = reg_grow_segment(cloud,i,view=True)

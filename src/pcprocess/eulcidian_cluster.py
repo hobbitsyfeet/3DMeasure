@@ -1,23 +1,21 @@
 import pcl
 import numpy as np
 from load import get_file
+import copy
 
-
-
-if __name__ == "__main__":
-    cloud_path, cloud_format = get_file()
-    cloud = pcl.load(cloud_path, format=cloud_format)
+def cluster(pcl_cloud):
+    # pcl_cloud = pcl.load(cloud_path, format=cloud_format)
     
-    print(cloud.size)
+    print(pcl_cloud.size)
     #downsample with a leaf size of 1cm
-    vox_grid = cloud.make_voxel_grid_filter()
+    vox_grid = pcl_cloud.make_voxel_grid_filter()
     vox_grid.set_leaf_size(0.01, 0.01, 0.01)
     cloud_filtered = vox_grid.filter()
 
     #create the segmentation for the planar model and set all parameters
     print("Creating Segmentation")
     
-    seg = cloud.make_segmenter()
+    seg = pcl_cloud.make_segmenter()
     seg.set_optimize_coefficients(True)
     seg.set_model_type(pcl.SACMODEL_PLANE)
     #seg.set_model_type(pcl.SAC_RANSAC)
@@ -30,16 +28,16 @@ if __name__ == "__main__":
 
     tree = cloud_filtered.make_kdtree()
 
-    #extract the planar inliers from the input cloud
+    #extract the planar inliers from the input pcl_cloud
     ec = cloud_filtered.make_EuclideanClusterExtraction()
     ec.set_ClusterTolerance(0.02) # 2cm
-    ec.set_MinClusterSize(100)
-    ec.set_MaxClusterSize(250000)
+    ec.set_MinClusterSize(200)
+    ec.set_MaxClusterSize(2500000)
     ec.set_SearchMethod(tree)
     cluster_indices = ec.Extract()
 
     cloud_cluster = pcl.PointCloud()
-
+    cloud_clusters = []
     for j, indices in enumerate(cluster_indices):
         print("indices = " + str(indices))
         points = np.zeros((len(indices), 3), dtype=np.float32)
@@ -51,9 +49,15 @@ if __name__ == "__main__":
             points[i][2] = cloud_filtered[indice][2]
 
         
-        print("saving")
+        # print("saving")
         cloud_cluster.from_array(points)
-        ss = "cloud_cluster_" + str(j) + ".pcd"
-        pcl.save(cloud_cluster, ss)
+        cloud_copy = copy.deepcopy(cloud_cluster)
+        cloud_clusters.append(cloud_copy)
+        # ss = "cloud_cluster_" + str(j) + ".pcd"
+        # pcl.save(cloud_cluster, ss)
+    return cloud_clusters
+
+# if __name__ == "__main__":
+    
     
     

@@ -11,7 +11,7 @@ import open3d as o3d
 import pyrealsense2 as rs2
 
 from load import get_file
-from measure import manual_measure
+from measure_cloud import manual_measure
 
 
 def demo_crop_geometry():
@@ -117,18 +117,16 @@ def pick_points(pcd):
     return vis.get_picked_points()
 
 
-def demo_manual_registration():
+def register(o3d_source_cloud, o3d_target_cloud):
     print("Demo for manual ICP")
-    source_path, source_format = get_file()
-    target_path, source_format = get_file()
-    source = o3d.io.read_point_cloud(source_path)
-    target = o3d.io.read_point_cloud(target_path)
+    # source_path, source_format = get_file()
+    # target_path, source_format = get_file()
     print("Visualization of two point clouds before manual alignment")
-    draw_registration_result(source, target, np.identity(4))
+    draw_registration_result(o3d_source_cloud, o3d_target_cloud, np.identity(4))
 
     # pick points from two point clouds and builds correspondences
-    picked_id_source = pick_points(source)
-    picked_id_target = pick_points(target)
+    picked_id_source = pick_points(o3d_source_cloud)
+    picked_id_target = pick_points(o3d_target_cloud)
     print(picked_id_source)
     assert (len(picked_id_source) >= 3 and len(picked_id_target) >= 3)
     assert (len(picked_id_source) == len(picked_id_target))
@@ -139,30 +137,38 @@ def demo_manual_registration():
     # estimate rough transformation using correspondences
     print("Compute a rough transform using the correspondences given by user")
     p2p = o3d.registration.TransformationEstimationPointToPoint()
-    trans_init = p2p.compute_transformation(source, target,
+    trans_init = p2p.compute_transformation(o3d_source_cloud, o3d_target_cloud,
                                             o3d.utility.Vector2iVector(corr))
 
     # point-to-point ICP for refinement
     print("Perform point-to-point ICP refinement")
     threshold = 0.03  # 3cm distance threshold
     reg_p2p = o3d.registration.registration_icp(
-        source, target, threshold, trans_init,
+        o3d_source_cloud, o3d_target_cloud, threshold, trans_init,
         o3d.registration.TransformationEstimationPointToPoint())
-    draw_registration_result(source, target, reg_p2p.transformation)
-    source_temp = copy.deepcopy(source)
-    target_temp = copy.deepcopy(target)
+    draw_registration_result(o3d_source_cloud, o3d_target_cloud, reg_p2p.transformation)
+    source_temp = copy.deepcopy(o3d_source_cloud)
+    target_temp = copy.deepcopy(o3d_target_cloud)
     # source_temp.paint_uniform_color([1, 0.706, 0])
     # target_temp.paint_uniform_color([0, 0.651, 0.929])
     source_temp.transform(reg_p2p.transformation)
     registered_cloud = source_temp + target_temp
 
     o3d.io.write_point_cloud("./registered_cloud.pcd", registered_cloud)
+    return registered_cloud
 
 
 
 if __name__ == "__main__":
+    cloud_path, cloud_format = get_file()
+    cloud_1 = o3d.io.read_point_cloud(cloud_path,cloud_format)
+    cloud_path, cloud_format = get_file()
+    cloud_2 = o3d.io.read_point_cloud(cloud_path,cloud_format)
+    registered_cloud = register(cloud_1,cloud_2)
+
+    o3d.io.write_point_cloud("./data/_test_manualregist.ply",registered_cloud,True)
     #demo_crop_geometry()
-    demo_manual_registration()
+    # demo_manual_registration()
     # cloud_path, cloud_format = get_file()
     # cloud = o3d.io.read_point_cloud(cloud_path, format=cloud_format)
     #intrinsics = read_intrinsics((cloud_path[:-4] + "_intrinsics.txt"))

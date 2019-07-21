@@ -26,7 +26,7 @@ def get_file(file_path = None):
 if __name__ == "__main__":
     file_path, file_format = get_file()
 
-    cloud = pcl.load(file_path, format=file_format)
+    cloud = pcl.load_XYZRGB(file_path, format=file_format)
     # centred = cloud - np.mean(cloud, 0)
     # # print(centred)
     # ptcloud_centred = pcl.PointCloud()
@@ -36,11 +36,12 @@ if __name__ == "__main__":
     visual = pcl.pcl_visualization.CloudViewing()
     
     # PointXYZ
-    visual.ShowMonochromeCloud(cloud, b'cloud')
+    # visual.ShowMonochromeCloud(cloud, b'cloud')
     # visual.ShowGrayCloud(ptcloud_centred, b'cloud')
-    # visual.ShowColorCloud(cloud, b'cloud')
+    visual.ShowColorCloud(cloud, b'cloud')
     # visual.ShowColorACloud(cloud, b'cloud')
-
+    cloud.make_NormalEstimation()
     v = True
     while v:
         v = not(visual.WasStopped())
+    pcl.save_XYZRGBA(cloud,"./data/_test_save.ply",format="ply",binary=True)

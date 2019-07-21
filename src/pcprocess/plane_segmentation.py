@@ -8,15 +8,15 @@ import pcl.pcl_visualization
 
 
 
-def plane_segment(cloud):
+def segment(pcl_cloud):
 
-    ne = cloud.make_NormalEstimation()
-    tree = cloud.make_kdtree()
+    ne = pcl_cloud.make_NormalEstimation()
+    tree = pcl_cloud.make_kdtree()
     ne.set_SearchMethod(tree)
     ne.set_KSearch(50)
 
 
-    seg = cloud.make_segmenter_normals(ksearch=50)
+    seg = pcl_cloud.make_segmenter_normals(ksearch=50)
     seg.set_optimize_coefficients(True)
     seg.set_model_type(pcl.SACMODEL_NORMAL_PLANE)
     seg.set_normal_distance_weight(0.1)
@@ -27,11 +27,18 @@ def plane_segment(cloud):
     [inliers_plane, coefficients_plane] = seg.segment()
 
 
-    cloud_plane = cloud.extract(inliers_plane, True)
+    cloud_plane = pcl_cloud.extract(inliers_plane, True)
     return cloud_plane
 
 if __name__ == "__main__":
-    
+
     cloud_path, cloud_format = get_file()
-    cloud = pcl.load(cloud_path, cloud_format)
-    cloud = plane_segment(cloud)
+
+    # pcl_cloud = pcl.load(cloud_path, cloud_format)
+    pcl_cloud = pcl.load(cloud_path, cloud_format)
+    pcl.copy
+    viewer = pcl.pcl_visualization.CloudViewing()
+    viewer.ShowMonochromeCloud(pcl_cloud)
+    pcl_cloud = segment(pcl_cloud)
+    pcl.save(pcl_cloud, "./data/_test_plane_segmentation.ply", format="ply")
+    # pcl.save(pcl_cloud, "./data/_test_plane_segmentation.ply", format="ply")
