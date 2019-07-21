@@ -57,3 +57,12 @@ Follow these instructions from [conda forge](https://anaconda.org/conda-forge/pc
 To install this package (point cloud library) with conda run one of the [following](https://gis.stackexchange.com/questions/287773/installing-pcl-module-for-python-3-6-in-anaconda):
   
     conda install -c sirokujira python-pcl --channel conda-forge
+    
+    
+#
+# Photos
+#
+
+![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/2BearsBeforePipe.PNG)
+![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/2Bears.PNG)
+![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/Regerestered_bear.PNG)
