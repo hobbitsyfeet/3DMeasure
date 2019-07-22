@@ -9,6 +9,7 @@ import copy
 
 import open3d as o3d
 import pyrealsense2 as rs2
+import o3d_select
 
 from load import get_file
 from measure_cloud import manual_measure
@@ -100,23 +101,6 @@ def draw_registration_result(source, target, transformation):
     o3d.visualization.draw_geometries([source_temp, target_temp])
 
 
-def pick_points(pcd):
-    print("")
-    print(
-        "1) Please pick at least three correspondences using [shift + left click]"
-    )
-    print("   Press [shift + right click] to undo point picking")
-    print("2) Afther picking points, press q for close the window")
-    vis = o3d.visualization.VisualizerWithEditing()
-    vis.create_window()
-    vis.add_geometry(pcd)
-    vis.run()  # user picks points
-    vis.destroy_window()
-    print("")
-    #returns the inices of the users picked points
-    return vis.get_picked_points()
-
-
 def register(o3d_source_cloud, o3d_target_cloud):
     print("Demo for manual ICP")
     # source_path, source_format = get_file()
@@ -125,8 +109,8 @@ def register(o3d_source_cloud, o3d_target_cloud):
     draw_registration_result(o3d_source_cloud, o3d_target_cloud, np.identity(4))
 
     # pick points from two point clouds and builds correspondences
-    picked_id_source = pick_points(o3d_source_cloud)
-    picked_id_target = pick_points(o3d_target_cloud)
+    picked_id_source = o3d_select.pick_points(o3d_source_cloud)
+    picked_id_target = o3d_select.pick_points(o3d_target_cloud)
     print(picked_id_source)
     assert (len(picked_id_source) >= 3 and len(picked_id_target) >= 3)
     assert (len(picked_id_source) == len(picked_id_target))

@@ -3,13 +3,15 @@
 # How to use Normal Distributions Transform
 # http://pointclouds.org/documentation/tutorials/normal_distributions_transform.php#normal-distributions-transform
 
+import copy
+
+import numpy as np
+import open3d as o3d
 import pcl
 import pcl.pcl_visualization
-from load import get_file
-import numpy as np
 
-import open3d as o3d
-import copy
+from load import get_file
+
 # int main (int argc, char** argv)
 
 
