@@ -62,7 +62,18 @@ To install this package (point cloud library) with conda run one of the [followi
 #
 # Photos
 #
+Original Cloud, ground removed (in pipeline)
 
 ![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/2BearsBeforePipe.PNG)
+
+Clouds clustered and clusters selected
+
 ![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/2Bears.PNG)
+
+Manual Registration
+
 ![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/Regerestered_bear.PNG)
+
+Automatic Registration
+
+![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/Automatic_registration.PNG)
