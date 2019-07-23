@@ -1,7 +1,9 @@
 # examples/Python/Advanced/global_registration.py
 
-import open3d as o3d
 import copy
+
+import open3d as o3d
+
 from load import get_file
 
 

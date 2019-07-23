@@ -1,7 +1,10 @@
 import pcl
 from load import get_file
 
-def smooth(cloud, radius):
+def smooth(cloud, radius=0.01):
+    """
+    default radius for sampling is 1cm
+    """
     tree = cloud.make_kdtree()
 
     #create moving least squares settings
