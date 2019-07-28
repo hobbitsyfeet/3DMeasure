@@ -1,7 +1,12 @@
 import pyrealsense2 as rs
 import numpy as np
 import cv2
+
+
 import logging
+
+def callback():
+    print ("click!")
 
 
 # Configure depth and color streams...
@@ -44,13 +49,38 @@ pc_1 = rs.pointcloud()
 pc_2 = rs.pointcloud()
 decimate = rs.decimation_filter()
 decimate.set_option(rs.option.filter_magnitude, 2)
+global save_index
 save_index = 0
 save_path = "./data/"
 colorizer_1 = rs.colorizer()
 colorizer_2 = rs.colorizer()
-try:
-    while True:
 
+def nothing(x):
+    pass
+def save(event,x,y,flags,param):
+    if event == cv2.EVENT_LBUTTONDBLCLK:
+        global save_index
+        save_index+=1
+        print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
+        print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
+        param[0].export_to_ply((save_path + "816612061111_no"+str(save_index)+".ply"),param[1])
+        param[2].export_to_ply((save_path + "816612061344_no"+str(save_index)+".ply"),param[3])
+        
+        print("Saved")
+switch = '0 : OFF \n1 : ON'
+
+
+cv2.namedWindow('RealSense', cv2.WINDOW_NORMAL)
+cv2.resizeWindow('RealSense', 720,480)
+
+
+cv2.createTrackbar(switch, 'RealSense',0,1, nothing)
+
+
+try:
+    while cv2.getWindowProperty('RealSense', 1) >=0 :
+        # if(cv2.getTrackbarPos(switch,'RealSense')) == -1:
+        #     break
         # Camera 1
         # Wait for a coherent pair of frames: depth and color
         frames_1 = pipeline_1.wait_for_frames()
@@ -98,21 +128,22 @@ try:
         images = np.hstack((color_image_1,color_image_2))
 
         # Show images from both cameras
-        cv2.namedWindow('RealSense', cv2.WINDOW_NORMAL)
+        if(cv2.getTrackbarPos(switch,'RealSense')) == -1:
+            break
         cv2.imshow('RealSense', images)
+        
+        cv2.setMouseCallback('RealSense', save, [points_1, mapped_frame_1,points_2, mapped_frame_2])
+        s = cv2.getTrackbarPos(switch,'RealSense')
         # Save images and depth maps from both cameras by pressing 's'
-        ch = cv2.waitKey(25)
-        if ch==ord('e'):
+        
+        if s==1:
             save_index += 1
 
             print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
             print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
             points_1.export_to_ply((save_path + "816612061111_no"+str(save_index)+ ".ply"), mapped_frame_1)
             points_2.export_to_ply((save_path + "816612061344_no"+str(save_index)+ ".ply"), mapped_frame_2)
-            # cv2.imwrite("my_image_1.jpg",color_image_1)
-            # cv2.imwrite("my_depth_1.jpg",depth_colormap_1)
-            # cv2.imwrite("my_image_2.jpg",color_image_2)
-            # cv2.imwrite("my_depth_2.jpg",depth_colormap_2)
+            
             print ("Save")
 
 
@@ -121,3 +152,4 @@ finally:
     # Stop streaming
     pipeline_1.stop()
     pipeline_2.stop()
+
