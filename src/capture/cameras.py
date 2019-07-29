@@ -1,9 +1,12 @@
 import pyrealsense2 as rs
 import numpy as np
 import cv2
-
-
+import open3d as o3d
+import pcl
+from pcl import pcl_visualization
 import logging
+
+import threading
 
 def callback():
     print ("click!")
@@ -55,41 +58,35 @@ save_path = "./data/"
 colorizer_1 = rs.colorizer()
 colorizer_2 = rs.colorizer()
 
+# filters = [rs.disparity_transform(),
+#                 rs.spatial_filter(),
+#                 rs.temporal_filter(),
+#                 rs.disparity_transform(False)]
+
 def nothing(x):
     pass
-def save(event,x,y,flags,param):
-    if event == cv2.EVENT_LBUTTONDBLCLK:
-        global save_index
-        save_index+=1
-        print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
-        print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
-        param[0].export_to_ply((save_path + "816612061111_no"+str(save_index)+".ply"),param[1])
-        param[2].export_to_ply((save_path + "816612061344_no"+str(save_index)+".ply"),param[3])
-        
-        print("Saved")
-switch = '0 : OFF \n1 : ON'
+def o3d_view_pointcloud(path_1, path_2):
+    o3d_cloud1 = o3d.io.read_point_cloud(path_1, format="ply")
+    o3d_cloud2 = o3d.io.read_point_cloud(path_2, format="ply")
+    o3d.visualization.draw_geometries([o3d_cloud1, o3d_cloud2])
 
-
-cv2.namedWindow('RealSense', cv2.WINDOW_NORMAL)
-cv2.resizeWindow('RealSense', 720,480)
-
-
-cv2.createTrackbar(switch, 'RealSense',0,1, nothing)
-
-
-try:
-    while cv2.getWindowProperty('RealSense', 1) >=0 :
-        # if(cv2.getTrackbarPos(switch,'RealSense')) == -1:
-        #     break
-        # Camera 1
-        # Wait for a coherent pair of frames: depth and color
-        frames_1 = pipeline_1.wait_for_frames()
-        depth_frame_1 = frames_1.get_depth_frame()
-        color_frame_1 = frames_1.get_color_frame()
+def view_pointcloud(path_1, path_2):
+    pcl_cloud1 = pcl.load_XYZRGB(path_1, format="ply")
+    pcl_cloud2 = pcl.load_XYZRGB(path_2, format="ply")
+    viewer = pcl_visualization.CloudViewing()
+    viewer.ShowColorCloud(pcl_cloud1)
+    # viewer.ShowColorCloud(pcl_cloud2)
+    v = True
+    while v:
+        v = not(viewer.WasStopped())
+    # pcl.save(cloud,"./data/Best2_Scaled_Monkey.ply",format="ply",binary=False)
+def get_depth_data(frame_1, frame_2):
+        # frames_1 = pipeline_1.wait_for_frames()
+        depth_frame_1 = frame_1.get_depth_frame()
+        color_frame_1 = frame_1.get_color_frame()
 
         depth_frame_1 = decimate.process(depth_frame_1)
-        if not depth_frame_1 or not color_frame_1:
-            continue
+
         # Convert images to numpy arrays
         depth_image_1 = np.asanyarray(depth_frame_1.get_data())
         color_image_1 = np.asanyarray(color_frame_1.get_data())
@@ -103,19 +100,23 @@ try:
         frames_2 = pipeline_2.wait_for_frames()
         depth_frame_2 = frames_2.get_depth_frame()
         color_frame_2 = frames_2.get_color_frame()
-        if not depth_frame_2 or not color_frame_2:
-            continue
+
+
+        depth_frame_1 = decimate.process(depth_frame_1)
+        depth_frame_2 = decimate.process(depth_frame_2)
+
+        # for f in filters:
+        #         depth_frame_1 = f.process(depth_frame_1)
+        #         depth_frame_2 = f.process(depth_frame_2)
+
         # Convert images to numpy arrays
         depth_image_2 = np.asanyarray(depth_frame_2.get_data())
         color_image_2 = np.asanyarray(color_frame_2.get_data())
         colorized_depth_2 = colorizer_2.colorize(depth_frame_2)
         # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
         depth_colormap_2 = np.asanyarray(colorized_depth_2.get_data())
-        # depth_colormap_2 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_2, alpha=0.5), cv2.COLORMAP_JET)
-        
+        depth_colormap_2 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_2, alpha=0.5), cv2.COLORMAP_JET)
         # Stack all images horizontally
-
-        cv2.waitKey(1)
         mapped_frame_1, color_source_1 = color_frame_1, color_image_1
         mapped_frame_2, color_source_2 = color_frame_2, color_image_2
 
@@ -125,27 +126,122 @@ try:
         pc_1.map_to(mapped_frame_1)
         pc_2.map_to(mapped_frame_2)
 
+        return points_1, points_2, mapped_frame_1, mapped_frame_2
+
+
+def save(event,x,y,flags,param):
+    if event == cv2.EVENT_LBUTTONDBLCLK:
+        global save_index
+        save_index+=1
+        points_1, points_2, mapped_frame_1, mapped_frame_2 = get_depth_data(param[0],param[1])
+        # points_2, mapped_frame_2 = get_depth_data(param[1])
+        print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
+        print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
+        points_1.export_to_ply((save_path + "816612061111_no"+str(save_index)+".ply"),mapped_frame_1)
+        points_2.export_to_ply((save_path + "816612061344_no"+str(save_index)+".ply"),mapped_frame_2)
+
+        # o3d_view_pointcloud((save_path + "816612061111_no"+str(save_index)+".ply"),
+        #                     (save_path + "816612061344_no"+str(save_index)+".ply"))
+
+
+        view_pointcloud((save_path + "816612061111_no"+str(save_index)+".ply"),
+                        (save_path + "816612061344_no"+str(save_index)+".ply"))
+
+       
+        print("Saved")
+
+switch = '0 : OFF \n1 : ON'
+
+
+
+cv2.namedWindow('RealSense', cv2.WINDOW_NORMAL)
+cv2.resizeWindow('RealSense', 1000,480)
+
+cv2.createTrackbar(switch, 'RealSense',0,1, nothing)
+
+try:
+    #This initialization loads up the first frame to all the global values.
+    #This is done because the first process does not load the colour data over the point data.
+    #I dont know why.
+    print("Preforming initial Check...")
+    frames_1 = pipeline_1.wait_for_frames()
+    depth_frame_1 = frames_1.get_depth_frame()
+    color_frame_1 = frames_1.get_color_frame()
+    depth_frame_1 = decimate.process(depth_frame_1)
+    # Convert images to numpy arrays
+    depth_image_1 = np.asanyarray(depth_frame_1.get_data())
+    color_image_1 = np.asanyarray(color_frame_1.get_data())
+    colorized_depth_1 = colorizer_1.colorize(depth_frame_1)
+    # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
+    depth_colormap_1 = np.asanyarray(colorized_depth_1.get_data())
+    # depth_colormap_1 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_1, alpha=0.5), cv2.COLORMAP_JET)
+    # Camera 2
+    # Wait for a coherent pair of frames: depth and color
+    frames_2 = pipeline_2.wait_for_frames()
+    depth_frame_2 = frames_2.get_depth_frame()
+    color_frame_2 = frames_2.get_color_frame()
+    depth_frames_1 = decimate.process(depth_frame_1)
+    depth_frames_2 = decimate.process(depth_frame_2)
+    # for f in filters:
+    #         depth_frame_1 = f.process(depth_frame_1)
+    #         depth_frame_2 = f.process(depth_frame_2)
+    # Convert images to numpy arrays
+    depth_image_2 = np.asanyarray(depth_frame_2.get_data())
+    color_image_2 = np.asanyarray(color_frame_2.get_data())
+    colorized_depth_2 = colorizer_2.colorize(depth_frame_2)
+    # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
+    depth_colormap_2 = np.asanyarray(colorized_depth_2.get_data())
+    depth_colormap_2 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_2, alpha=0.5), cv2.COLORMAP_JET)
+    # Stack all images horizontally
+    mapped_frame_1, color_source_1 = color_frame_1, color_image_1
+    mapped_frame_2, color_source_2 = color_frame_2, color_image_2
+    points_1 = pc_1.calculate(depth_frame_1)
+    points_2 = pc_2.calculate(depth_frame_2)
+    pc_1.map_to(mapped_frame_1)
+    pc_2.map_to(mapped_frame_2)
+    print("Initial test complete...")
+
+    while cv2.getWindowProperty('RealSense', 1) >=0 :
+
+        #collect and process only the colour frames for viewing
+        frames_1 = pipeline_1.wait_for_frames()
+
+        color_frame_1 = frames_1.get_color_frame()
+
+        color_image_1 = np.asanyarray(color_frame_1.get_data())
+   
+        frames_2 = pipeline_2.wait_for_frames()
+
+        color_frame_2 = frames_2.get_color_frame()
+
+        color_image_2 = np.asanyarray(color_frame_2.get_data())
+
+        cv2.waitKey(1)
+
         images = np.hstack((color_image_1,color_image_2))
 
         # Show images from both cameras
         if(cv2.getTrackbarPos(switch,'RealSense')) == -1:
             break
         cv2.imshow('RealSense', images)
-        
-        cv2.setMouseCallback('RealSense', save, [points_1, mapped_frame_1,points_2, mapped_frame_2])
+        cv2.setMouseCallback('RealSense', save, [frames_1, frames_2])
+       
         s = cv2.getTrackbarPos(switch,'RealSense')
-        # Save images and depth maps from both cameras by pressing 's'
-        
+
+        # Save images and depth maps from both cameras by turning on the switch
         if s==1:
             save_index += 1
-
             print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
             print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
+            points_1, points_2, mapped_frame_1, mapped_frame_2 = get_depth_data(frames_1, frames_2)
+
             points_1.export_to_ply((save_path + "816612061111_no"+str(save_index)+ ".ply"), mapped_frame_1)
             points_2.export_to_ply((save_path + "816612061344_no"+str(save_index)+ ".ply"), mapped_frame_2)
-            
+            # view_pointcloud((save_path + "816612061344_no"+str(save_index)+ ".ply"),(save_path + "816612061344_no"+str(save_index)+ ".ply"))
             print ("Save")
 
+
+            
 
 finally:
 
