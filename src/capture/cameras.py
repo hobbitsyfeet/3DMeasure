@@ -159,40 +159,8 @@ try:
     #I dont know why.
     print("Preforming initial Check...")
     frames_1 = pipeline_1.wait_for_frames()
-    depth_frame_1 = frames_1.get_depth_frame()
-    color_frame_1 = frames_1.get_color_frame()
-    depth_frame_1 = decimate.process(depth_frame_1)
-    # Convert images to numpy arrays
-    depth_image_1 = np.asanyarray(depth_frame_1.get_data())
-    color_image_1 = np.asanyarray(color_frame_1.get_data())
-    colorized_depth_1 = colorizer_1.colorize(depth_frame_1)
-    # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
-    depth_colormap_1 = np.asanyarray(colorized_depth_1.get_data())
-    # depth_colormap_1 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_1, alpha=0.5), cv2.COLORMAP_JET)
-    # Camera 2
-    # Wait for a coherent pair of frames: depth and color
     frames_2 = pipeline_2.wait_for_frames()
-    depth_frame_2 = frames_2.get_depth_frame()
-    color_frame_2 = frames_2.get_color_frame()
-    depth_frames_1 = decimate.process(depth_frame_1)
-    depth_frames_2 = decimate.process(depth_frame_2)
-    # for f in filters:
-    #         depth_frame_1 = f.process(depth_frame_1)
-    #         depth_frame_2 = f.process(depth_frame_2)
-    # Convert images to numpy arrays
-    depth_image_2 = np.asanyarray(depth_frame_2.get_data())
-    color_image_2 = np.asanyarray(color_frame_2.get_data())
-    colorized_depth_2 = colorizer_2.colorize(depth_frame_2)
-    # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
-    depth_colormap_2 = np.asanyarray(colorized_depth_2.get_data())
-    depth_colormap_2 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_2, alpha=0.5), cv2.COLORMAP_JET)
-    # Stack all images horizontally
-    mapped_frame_1, color_source_1 = color_frame_1, color_image_1
-    mapped_frame_2, color_source_2 = color_frame_2, color_image_2
-    points_1 = pc_1.calculate(depth_frame_1)
-    points_2 = pc_2.calculate(depth_frame_2)
-    pc_1.map_to(mapped_frame_1)
-    pc_2.map_to(mapped_frame_2)
+    get_depth_data(frames_1, frames_2)
     print("Initial test complete...")
 
     while cv2.getWindowProperty('RealSense', 1) >=0 :
