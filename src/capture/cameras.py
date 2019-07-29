@@ -1,9 +1,9 @@
 import pyrealsense2 as rs
 import numpy as np
 import cv2
-# import open3d as o3d
-import pcl
-from pcl import pcl_visualization
+import open3d as o3d
+# import pcl
+# from pcl import pcl_visualization
 
 
 # Configure depth and color streams...
@@ -59,20 +59,20 @@ colorizer_2 = rs.colorizer()
 
 def nothing(x):
     pass
-# def o3d_view_pointcloud(path_1, path_2):
-#     o3d_cloud1 = o3d.io.read_point_cloud(path_1, format="ply")
-#     o3d_cloud2 = o3d.io.read_point_cloud(path_2, format="ply")
-#     o3d.visualization.draw_geometries([o3d_cloud1, o3d_cloud2])
-
 def view_pointcloud(path_1, path_2):
-    pcl_cloud1 = pcl.load_XYZRGB(path_1, format="ply")
-    pcl_cloud2 = pcl.load_XYZRGB(path_2, format="ply")
-    viewer = pcl_visualization.CloudViewing()
-    viewer.ShowColorCloud(pcl_cloud1)
-    # viewer.ShowColorCloud(pcl_cloud2)
-    v = True
-    while v:
-        v = not(viewer.WasStopped())
+    o3d_cloud1 = o3d.io.read_point_cloud(path_1, format="ply")
+    o3d_cloud2 = o3d.io.read_point_cloud(path_2, format="ply")
+    o3d.visualization.draw_geometries([o3d_cloud1, o3d_cloud2])
+
+# def view_pointcloud(path_1, path_2):
+#     pcl_cloud1 = pcl.load_XYZRGB(path_1, format="ply")
+#     pcl_cloud2 = pcl.load_XYZRGB(path_2, format="ply")
+#     viewer = pcl_visualization.CloudViewing()
+#     viewer.ShowColorCloud(pcl_cloud1)
+#     # viewer.ShowColorCloud(pcl_cloud2)
+#     v = True
+#     while v:
+#         v = not(viewer.WasStopped())
     # pcl.save(cloud,"./data/Best2_Scaled_Monkey.ply",format="ply",binary=False)
 def get_depth_data(frame_1, frame_2):
         # frames_1 = pipeline_1.wait_for_frames()
