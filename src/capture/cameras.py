@@ -1,15 +1,9 @@
 import pyrealsense2 as rs
 import numpy as np
 import cv2
-import open3d as o3d
+# import open3d as o3d
 import pcl
 from pcl import pcl_visualization
-import logging
-
-import threading
-
-def callback():
-    print ("click!")
 
 
 # Configure depth and color streams...
@@ -18,13 +12,13 @@ pipeline_1 = rs.pipeline()
 config_1 = rs.config()
 config_1.enable_device('816612061111')
 config_1.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-config_1.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+config_1.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
 # ...from Camera 2
 pipeline_2 = rs.pipeline()
 config_2 = rs.config()
 config_2.enable_device('816612061344')
 config_2.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-config_2.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+config_2.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
 
 
 # Start streaming from both cameras
@@ -65,10 +59,10 @@ colorizer_2 = rs.colorizer()
 
 def nothing(x):
     pass
-def o3d_view_pointcloud(path_1, path_2):
-    o3d_cloud1 = o3d.io.read_point_cloud(path_1, format="ply")
-    o3d_cloud2 = o3d.io.read_point_cloud(path_2, format="ply")
-    o3d.visualization.draw_geometries([o3d_cloud1, o3d_cloud2])
+# def o3d_view_pointcloud(path_1, path_2):
+#     o3d_cloud1 = o3d.io.read_point_cloud(path_1, format="ply")
+#     o3d_cloud2 = o3d.io.read_point_cloud(path_2, format="ply")
+#     o3d.visualization.draw_geometries([o3d_cloud1, o3d_cloud2])
 
 def view_pointcloud(path_1, path_2):
     pcl_cloud1 = pcl.load_XYZRGB(path_1, format="ply")
@@ -218,12 +212,16 @@ try:
 
         cv2.waitKey(1)
 
+        color_image_1 = cv2.cvtColor(color_image_1, cv2.COLOR_BGR2RGB)
+        color_image_2 = cv2.cvtColor(color_image_2, cv2.COLOR_BGR2RGB)
         images = np.hstack((color_image_1,color_image_2))
 
         # Show images from both cameras
         if(cv2.getTrackbarPos(switch,'RealSense')) == -1:
             break
+        
         cv2.imshow('RealSense', images)
+        
         cv2.setMouseCallback('RealSense', save, [frames_1, frames_2])
        
         s = cv2.getTrackbarPos(switch,'RealSense')
