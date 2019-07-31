@@ -46,24 +46,39 @@ def get_pcl_from_numpy(file_path):
     
 
 if __name__ == "__main__":
-    file_path, file_format = get_file()
-    cloud = get_pcl_from_numpy(file_path)
-    # cloud = pcl.load(file_path, format=file_format)
-    # # centred = cloud - np.mean(cloud, 0)
-    # # # print(centred)
-    # # ptcloud_centred = pcl.PointCloud()
-    # # ptcloud_centred.from_array(centred)
-    # print(cloud)
-
-    visual = pcl.pcl_visualization.CloudViewing()
     
-    # # PointXYZ
-    visual.ShowMonochromeCloud(cloud, b'cloud')
-    # # visual.ShowGrayCloud(ptcloud_centred, b'cloud')
-    # visual.ShowColorCloud(cloud, b'cloud')
-    # # visual.ShowColorACloud(cloud, b'cloud')
-    # # cloud.make_NormalEstimation()
-    v = True
-    while v:
-        v = not(visual.WasStopped())
-    pcl.save(cloud,"./data/Best2_Scaled_Monkey.ply",format="ply",binary=False)
+    while True:
+        pc_type = None
+        try:
+            file_path, file_format = get_file()
+        except:
+            break
+        try:
+            cloud = pcl.load_XYZRGB(file_path, format=file_format)
+            pc_type = "colour"
+        except:
+            print("Could not load Colour Pointcloud, trying monochrome.")
+            try:
+                cloud = pcl.load(file_path, format=file_format)
+                pc_type = "monochrome"
+            except:
+                print("Could not load monochrome Pointcloud into pcl_cloud, trying numpy")
+                cloud = get_pcl_from_numpy(file_path)
+                pc_type = "numpy"
+
+        
+        visual = pcl.pcl_visualization.CloudViewing()
+        
+        # # PointXYZ
+        if pc_type == "colour":
+            visual.ShowColorCloud(cloud, b'cloud')
+        else:
+            visual.ShowMonochromeCloud(cloud, b'cloud')
+        # # visual.ShowGrayCloud(ptcloud_centred, b'cloud')
+        
+        # # visual.ShowColorACloud(cloud, b'cloud')
+        # # cloud.make_NormalEstimation()
+        v = True
+        while v:
+            v = not(visual.WasStopped())
+        # pcl.save(cloud,"./data/Best2_Scaled_Monkey.ply",format="ply",binary=False)
