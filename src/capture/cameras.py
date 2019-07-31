@@ -5,6 +5,7 @@ import open3d as o3d
 # import pcl
 # from pcl import pcl_visualization
 
+CV2_LBUTTON_FLAG = False
 
 # Configure depth and color streams...
 # ...from Camera 1
@@ -59,6 +60,19 @@ filters = [rs.disparity_transform(),
 
 def nothing(x):
     pass
+
+def set_CVLBUTTON_FLAG(event):
+    global CV2_LBUTTON_FLAG
+    if event != 0  and event != cv2.EVENT_LBUTTONDBLCLK:
+        if event == cv2.EVENT_LBUTTONDOWN:
+            print("SETTING CV_LBUTTON_FLAG TRUE")
+            CV2_LBUTTON_FLAG = True
+
+        if event == cv2.EVENT_LBUTTONUP:
+            print("SETTING CV_LBUTTON_FLAG FALSE")
+            CV2_LBUTTON_FLAG = False
+
+
 
 def o3d_view_pointcloud(path_1, path_2):
     """
@@ -140,6 +154,7 @@ def save(event,x,y,flags,param):
 
     Left click only saves. If held, it shoud continuously save data.
     """
+    set_CVLBUTTON_FLAG(event)
     global save_index
     # check if it was double click first, if so, save and display.
     if event == cv2.EVENT_LBUTTONDBLCLK:
@@ -152,21 +167,21 @@ def save(event,x,y,flags,param):
 
         o3d_view_pointcloud((save_path + "816612061111_no"+str(save_index)+".ply"),
                             (save_path + "816612061344_no"+str(save_index)+".ply"))
-
+        print("Saved")
         # view_pointcloud((save_path + "816612061111_no"+str(save_index)+".ply"),
         #                 (save_path + "816612061344_no"+str(save_index)+".ply"))
 
     # Otherwise check and see if left button is down (no double click) and simply save.
     # If left click is held down, it shoud record continuously
-    elif event == cv2.EVENT_LBUTTONDOWN:
+    elif CV2_LBUTTON_FLAG:
         save_index+=1
         points_1, points_2, mapped_frame_1, mapped_frame_2 = get_depth_data(param[0],param[1], param[2], param[3])
         print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
         print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
         points_1.export_to_ply((save_path + "816612061111_no"+str(save_index)+".ply"),mapped_frame_1)
         points_2.export_to_ply((save_path + "816612061344_no"+str(save_index)+".ply"),mapped_frame_2)
-
-    print("Saved")
+        print("Saved")
+    
 
 # name for the trackbar. This also acts as the toggle variable.
 switch = '0 : OFF \n1 : ON'
@@ -174,8 +189,8 @@ switch = '0 : OFF \n1 : ON'
 
 #create the cv2 window for display then make it fullscreen
 cv2.namedWindow('RealSense', cv2.WINDOW_NORMAL)
-cv2.setWindowProperty('Realsense', cv2.WND_PROP_FULLSCREEN, cv2.CV_WINDOW_FULLSCREEN)
-# cv2.resizeWindow('RealSense', 1000,480)
+# cv2.setWindowProperty('Realsense', cv2.WINDOW_NORMAL, cv2.WINDOW_FULLSCREEN)
+cv2.resizeWindow('RealSense',  2560 , 1440)
 
 cv2.createTrackbar(switch, 'RealSense',0,1, nothing)
 
@@ -219,12 +234,14 @@ try:
         cv2.imshow('RealSense', images)
         
         #using CV2 callback, save the images
+        
         cv2.setMouseCallback('RealSense', save, [frames_1, frames_2, color_frame_1, color_frame_2])
        
         s = cv2.getTrackbarPos(switch,'RealSense')
 
         # Save images and depth maps from both cameras by turning on the switch
-        if s==1:
+
+        if s==1 or CV2_LBUTTON_FLAG:
             save_index += 1
             print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
             print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
