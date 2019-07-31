@@ -171,16 +171,16 @@ def save(event,x,y,flags,param):
         # view_pointcloud((save_path + "816612061111_no"+str(save_index)+".ply"),
         #                 (save_path + "816612061344_no"+str(save_index)+".ply"))
 
-    # Otherwise check and see if left button is down (no double click) and simply save.
-    # If left click is held down, it shoud record continuously
-    elif CV2_LBUTTON_FLAG:
-        save_index+=1
-        points_1, points_2, mapped_frame_1, mapped_frame_2 = get_depth_data(param[0],param[1], param[2], param[3])
-        print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
-        print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
-        points_1.export_to_ply((save_path + "816612061111_no"+str(save_index)+".ply"),mapped_frame_1)
-        points_2.export_to_ply((save_path + "816612061344_no"+str(save_index)+".ply"),mapped_frame_2)
-        print("Saved")
+    # # Otherwise check and see if left button is down (no double click) and simply save.
+    # # If left click is held down, it shoud record continuously
+    # elif CV2_LBUTTON_FLAG:
+    #     save_index+=1
+    #     points_1, points_2, mapped_frame_1, mapped_frame_2 = get_depth_data(param[0],param[1], param[2], param[3])
+    #     print((save_path + "816612061111_no"+str(save_index)+ ".ply"))
+    #     print((save_path + "816612061344_no"+str(save_index)+ ".ply"))
+    #     points_1.export_to_ply((save_path + "816612061111_no"+str(save_index)+".ply"),mapped_frame_1)
+    #     points_2.export_to_ply((save_path + "816612061344_no"+str(save_index)+".ply"),mapped_frame_2)
+    #     print("Saved")
     
 
 # name for the trackbar. This also acts as the toggle variable.
