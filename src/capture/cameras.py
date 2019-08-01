@@ -2,6 +2,33 @@ import pyrealsense2 as rs
 import numpy as np
 import cv2
 import open3d as o3d
+import os
+from time import strftime
+import zipfile
+
+
+save_path = "./data/"
+#zipfile name is the Year/Month/Day-Hour/Minute started.
+zip_dir_name = save_path + strftime("%Y-%m-%d_%H-%M-%S")
+
+#code to zip files
+# Declare the function to return all file paths of the particular directory
+def retrieve_file_paths(dirName):
+ 
+    # setup file paths variable
+    file_paths = []
+
+    # Read all directory, subdirectories and file lists
+    for file in os.listdir(save_path):
+        if file.endswith(".ply"):
+            # Create the full filepath by using os module.
+            file_path = os.path.join(save_path, file)
+            if file_path[file_path.find("."):] != ".zip":
+                file_paths.append(file_path)
+                
+    # return all paths
+    return file_paths
+ 
 # import pcl
 # from pcl import pcl_visualization
 
@@ -45,11 +72,14 @@ w2, h2 = depth_intrinsics_2.width, depth_intrinsics_2.height
 
 pc_1 = rs.pointcloud()
 pc_2 = rs.pointcloud()
-decimate = rs.decimation_filter()
-decimate.set_option(rs.option.filter_magnitude, 2)
+decimate1 = rs.decimation_filter()
+decimate2 = rs.decimation_filter()
+decimate1.set_option(rs.option.filter_magnitude, 2)
+decimate2.set_option(rs.option.filter_magnitude, 2)
 global save_index
 save_index = 0
-save_path = "./data/"
+
+
 colorizer_1 = rs.colorizer()
 colorizer_2 = rs.colorizer()
 
@@ -101,7 +131,7 @@ def get_depth_data(frame_1, frame_2, color_frame_1, color_frame_2):
     # frames_1 = pipeline_1.wait_for_frames()
     depth_frame_1 = frame_1.get_depth_frame()
     # color_frame_1 = frame_1.get_color_frame()
-    depth_frame_1 = decimate.process(depth_frame_1)
+    # depth_frame_1 = decimate.process(depth_frame_1)
 
     # Convert images to numpy arrays
     depth_image_1 = np.asanyarray(depth_frame_1.get_data())
@@ -118,8 +148,8 @@ def get_depth_data(frame_1, frame_2, color_frame_1, color_frame_2):
     # color_frame_2 = frames_2.get_color_frame()
 
     #NOTE This is what reduces the pointcloud density.
-    depth_frame_1 = decimate.process(depth_frame_1)
-    depth_frame_2 = decimate.process(depth_frame_2)
+    depth_frame_1 = decimate1.process(depth_frame_1)
+    depth_frame_2 = decimate2.process(depth_frame_2)
 
 
     # for f in filters:
@@ -260,3 +290,15 @@ finally:
     pipeline_1.stop()
     pipeline_2.stop()
 
+    print("Exporting into Zip")
+    filePaths = retrieve_file_paths(save_path)
+    # writing files to a zipfile
+    zip_file = zipfile.ZipFile(zip_dir_name +'.zip', 'w', zipfile.ZIP_DEFLATED)
+    with zip_file:
+        # writing each file one by one
+        for file in filePaths:
+            print("Writing " + file ,end="...")
+            zip_file.write(file)
+            os.remove(file)
+            print("Removed from dir.")
+    print(zip_dir_name+'.zip file is created successfully!')

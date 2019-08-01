@@ -1,1 +1,0 @@
-width: 640, height: 480, ppx: 311.572, ppy: 235.185, fx: 627.684, fy: 627.684, model: Brown Conrady, coeffs: [0, 0, 0, 0, 0]
