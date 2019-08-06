@@ -4,8 +4,10 @@ import cv2
 import open3d as o3d
 import os
 from time import strftime
+from cv_track import track
 import zipfile
 
+tracker = track()
 
 save_path = "./data/"
 #zipfile name is the Year/Month/Day-Hour/Minute started.
@@ -130,39 +132,32 @@ def get_depth_data(frame_1, frame_2, color_frame_1, color_frame_2):
     """
     # frames_1 = pipeline_1.wait_for_frames()
     depth_frame_1 = frame_1.get_depth_frame()
-    # color_frame_1 = frame_1.get_color_frame()
-    # depth_frame_1 = decimate.process(depth_frame_1)
+    depth_frame_2 = frame_2.get_depth_frame()
+    
+    # depth_image_1 = np.asanyarray(depth_frame_1.get_data())
+    # depth_image_2 = np.asanyarray(depth_frame_2.get_data())
 
-    # Convert images to numpy arrays
-    depth_image_1 = np.asanyarray(depth_frame_1.get_data())
     color_image_1 = np.asanyarray(color_frame_1.get_data())
-    colorized_depth_1 = colorizer_1.colorize(depth_frame_1)
+    color_image_2 = np.asanyarray(color_frame_2.get_data())
     # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
-    depth_colormap_1 = np.asanyarray(colorized_depth_1.get_data())
-    # depth_colormap_1 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_1, alpha=0.5), cv2.COLORMAP_JET)
-
-    # Camera 2
-    # Wait for a coherent pair of frames: depth and color
-    frames_2 = pipeline_2.wait_for_frames()
-    depth_frame_2 = frames_2.get_depth_frame()
-    # color_frame_2 = frames_2.get_color_frame()
 
     #NOTE This is what reduces the pointcloud density.
-    depth_frame_1 = decimate1.process(depth_frame_1)
-    depth_frame_2 = decimate2.process(depth_frame_2)
-
+    # depth_frame_1 = decimate1.process(depth_frame_1)
+    # depth_frame_2 = decimate2.process(depth_frame_2)
 
     # for f in filters:
     #         depth_frame_1 = f.process(depth_frame_1)
     #         depth_frame_2 = f.process(depth_frame_2)
 
     # Convert images to numpy arrays
-    depth_image_2 = np.asanyarray(depth_frame_2.get_data())
-    color_image_2 = np.asanyarray(color_frame_2.get_data())
+
+    colorized_depth_1 = colorizer_1.colorize(depth_frame_1)
     colorized_depth_2 = colorizer_2.colorize(depth_frame_2)
+    
     # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
+    depth_colormap_1 = np.asanyarray(colorized_depth_1.get_data())
     depth_colormap_2 = np.asanyarray(colorized_depth_2.get_data())
-    depth_colormap_2 = cv2.applyColorMap(cv2.convertScaleAbs(depth_image_2, alpha=0.5), cv2.COLORMAP_JET)
+    
     # Stack all images horizontally
     mapped_frame_1, color_source_1 = color_frame_1, color_image_1
     mapped_frame_2, color_source_2 = color_frame_2, color_image_2
@@ -250,10 +245,24 @@ try:
 
         #needed for a break for viewing
         cv2.waitKey(1)
+        # try:
+        # color_image_1 = tracker.detect_model(color_image_1)
+        # color_image_2 = tracker.detect_model(color_image_2)
+        # except:
+        #     print("could not detect on image 1")
+        # try:
+            # output = tracker.detect_model(color_image_2)
+            # color_image_1, tracker_dimentions = tracker.show_detection(output, color_image_2)
+            # print(color_image_1)
+        # except:
+            # print("could not detect on image 2")
 
         #colour images prepped to display throu CV2
         color_image_1 = cv2.cvtColor(color_image_1, cv2.COLOR_BGR2RGB)
         color_image_2 = cv2.cvtColor(color_image_2, cv2.COLOR_BGR2RGB)
+
+
+
         images = np.hstack((color_image_1,color_image_2))
 
         #Use the trackbar existance to check if the X has been selected. Quits the program.
@@ -261,6 +270,8 @@ try:
             break
         
         #display the images
+        
+
         cv2.imshow('RealSense', images)
         
         #using CV2 callback, save the images
@@ -301,4 +312,4 @@ finally:
             zip_file.write(file)
             os.remove(file)
             print("Removed from dir.")
-    print(zip_dir_name+'.zip file is created successfully!')
+        print(zip_dir_name+'.zip file is created successfully!')
