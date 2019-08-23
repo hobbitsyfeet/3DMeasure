@@ -114,7 +114,7 @@ dmypy.json
 .pyre/
 .vscode/settings.json
 *.dcm
-data/PRICT-28/series_7/Virtual Place Information.xml
-data/PRICT-28/Scan_Verts.npy
-data/PRICT-28/Scan_Faces.npy
-data/PRICT-28/Preprocessfullimages_0.npy
+data/PRICT-28/series_7/.*
+*.ply
+*.pcd
+data
