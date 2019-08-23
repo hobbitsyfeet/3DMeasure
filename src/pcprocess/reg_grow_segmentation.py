@@ -5,24 +5,28 @@ from random import randrange
 from pcl import pcl_visualization
 from load import get_file
 from time import sleep
-def reg_grow_segment(cloud,smoothness, view=True):
-    
-
-    tree = cloud.make_kdtree()
+from copy import deepcopy
+def segment(pcl_cloud, smoothness, curve_thresh=1.0, ksearch=50, 
+            neighbours=200, min_cluster=50, max_cluster=100000, 
+            view=True):
+    """
+    Takes a PCL Pointcloud and segments it with region growing segmentation. 
+    """
+    tree = pcl_cloud.make_kdtree()
     #normal estimation
-    ne = cloud.make_NormalEstimation()
+    ne = pcl_cloud.make_NormalEstimation()
     ne.set_SearchMethod(tree)
     ne.set_KSearch(50)
     
     print("Creating Region Growing...", end="")
-    reg = cloud.make_RegionGrowing(ksearch=50)
-    reg.set_MinClusterSize(25)
-    reg.set_MaxClusterSize(1000000)
+    reg = pcl_cloud.make_RegionGrowing(ksearch=ksearch)
+    reg.set_MinClusterSize(min_cluster)
+    reg.set_MaxClusterSize(max_cluster)
     reg.set_SearchMethod(tree)
-    reg.set_NumberOfNeighbours(200)
+    reg.set_NumberOfNeighbours(neighbours)
 
     reg.set_SmoothnessThreshold(smoothness/ 180 * np.pi)
-    reg.set_CurvatureThreshold(1.0)
+    reg.set_CurvatureThreshold(curve_thresh)
     cluster_indices = reg.Extract()
     print("Done.")
     cloud_cluster = pcl.PointCloud()
@@ -38,13 +42,13 @@ def reg_grow_segment(cloud,smoothness, view=True):
 
 
         for i, indice in enumerate(indices):
-            points[i][0] = cloud[indice][0]
-            points[i][1] = cloud[indice][1]
-            points[i][2] = cloud[indice][2]
+            points[i][0] = pcl_cloud[indice][0]
+            points[i][1] = pcl_cloud[indice][1]
+            points[i][2] = pcl_cloud[indice][2]
 
         cloud_cluster.from_array(points)
-        
-        accumulate_clouds.append(cloud_cluster)
+        copy = deepcopy(cloud_cluster)
+        accumulate_clouds.append(copy)
         if view is False:
             continue
         else:
@@ -52,7 +56,7 @@ def reg_grow_segment(cloud,smoothness, view=True):
             
             cloud_id = uuid.uuid4().bytes
             # print(cloud_id)
-            pccolor = pcl.pcl_visualization.PointCloudColorHandleringCustom(cloud, randrange(0, 255, 1),
+            pccolor = pcl.pcl_visualization.PointCloudColorHandleringCustom(pcl_cloud, randrange(0, 255, 1),
                                                                                     randrange(0, 255, 1),
                                                                                     randrange(0, 255, 1))
 
@@ -75,6 +79,6 @@ def reg_grow_segment(cloud,smoothness, view=True):
 if __name__ == "__main__":
     
     cloud_path, cloud_format = get_file()
-    cloud = pcl.load(cloud_path, cloud_format)
+    pcl_cloud = pcl.load(cloud_path, cloud_format)
     # for i in range(400):
-    clusters = reg_grow_segment(cloud,5.5,view=True)
+    clusters = segment(pcl_cloud,3.3,view=True)

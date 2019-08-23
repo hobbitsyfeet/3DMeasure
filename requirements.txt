@@ -4,6 +4,9 @@ opencv-python==4.1.0.25
 pyrealsense2==2.20.0.721
 cython==0.29.10
 open3d-python ==0.7.0.0
+sklearn==0.0
+pandas==0.25.0
+matplotlib==3.1.1
 #pclpy==0.11.0 #note: only works python 3.6 - Windows
 #scikit-build==0.10.0
 

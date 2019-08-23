@@ -30,8 +30,6 @@ def o3d_to_pcl(o3d_cloud):
     return pcl_cloud
 
 
-
-
 def pcl_to_o3d(pcl_cloud):
     """
     Converts pcl pointcloud to open3d pointcloud to via numpy.
@@ -47,6 +45,21 @@ def pcl_to_o3d(pcl_cloud):
 
     return o3d_cloud
     
+def pcl_to_numpy(pcl_cloud):
+    """
+    Converts pcl pointcloud to numpy array.
+    """
+    np_cloud = np.empty([pcl_cloud.width, 3], dtype=np.float32)
+    np_cloud = np.asarray(pcl_cloud)
+    np_cloud = pcl_cloud.to_array()
+    return np_cloud
+
+def o3d_to_numpy(o3d_cloud):
+    """
+    Converts open3d pointcloud to numpy array
+    """
+    np_cloud = np.asarray(o3d_cloud.points)
+    return np_cloud
 
 
 
