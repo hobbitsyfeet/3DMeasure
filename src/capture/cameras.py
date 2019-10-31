@@ -2,13 +2,39 @@ import pyrealsense2 as rs
 import numpy as np
 import cv2
 import open3d as o3d
+import argparse
 import os
 from time import strftime
-from cv_track import track
+#from cv_track import track
 import zipfile
 
-tracker = track()
+parser = argparse.ArgumentParser()
+parser.add_argument('--all_filters', type=bool, default=False, help='Enables all post-processing filters to enhace quality and reduce noise. Spatial, Temporal and Disparity Transform')
+parser.add_argument('--spatial', '-s', type=bool, default=True, help='Enables smoothing that preserves edges.')
+parser.add_argument('--temporal', '-t', type=bool, default=True, help='Smooths/improves depth data by sampling previous frames. Best used with static scene due to blurriung')
+parser.add_argument('--disparity', type=bool, default=False, help="Only if you're dispair_ate.")
+parser.add_argument('--decimation' , '-d', type=int, default=2, help="Reduces resolution, and averages out depth of downsampled data.")
+parser.add_argument('--output', '-o', type=str, default='C:/Users/Justin/Documents/Github/3DMeasure/', help="Where to write the data")
+parser.add_argument('--config', type=str, default='')
+FLAGS = parser.parse_args()
+ALL_FILTERS = FLAGS.all_filters
+SPATIAL = FLAGS.spatial
+TEMPORAL = FLAGS.temporal
+DISPARITY = FLAGS.disparity
+DECIMATION = FLAGS.decimation
 
+
+
+jsonObj = json.load(open(self.jsonFile))
+self.json_string = str(jsonObj).replace("'", '\"')
+def loadConfiguration(self):
+	self.dev = self.cfg.get_device()
+	self.advnc_mode = rs.rs400_advanced_mode(self.dev)
+
+	print("Advanced mode is", "enabled" if self.advnc_mode.is_enabled() else "disabled")
+	self.advnc_mode.load_json(self.json_string)
+
+#tracker = track()
 save_path = "./data/"
 #zipfile name is the Year/Month/Day-Hour/Minute started.
 zip_dir_name = save_path + strftime("%Y-%m-%d_%H-%M-%S")
@@ -23,9 +49,10 @@ def retrieve_file_paths(dirName):
     # Read all directory, subdirectories and file lists
     for file in os.listdir(save_path):
         if file.endswith(".ply"):
-            # Create the full filepath by using os module.
+            # # Create the full filepath by using os module.
             file_path = os.path.join(save_path, file)
             if file_path[file_path.find("."):] != ".zip":
+
                 file_paths.append(file_path)
                 
     # return all paths
@@ -38,6 +65,11 @@ CV2_LBUTTON_FLAG = False
 
 # Configure depth and color streams...
 # ...from Camera 1
+pipelines = []
+configs = []
+profiles = []
+
+
 pipeline_1 = rs.pipeline()
 config_1 = rs.config()
 config_1.enable_device('816612061111')
@@ -76,8 +108,8 @@ pc_1 = rs.pointcloud()
 pc_2 = rs.pointcloud()
 decimate1 = rs.decimation_filter()
 decimate2 = rs.decimation_filter()
-decimate1.set_option(rs.option.filter_magnitude, 2)
-decimate2.set_option(rs.option.filter_magnitude, 2)
+decimate1.set_option(rs.option.filter_magnitude, DECIMATION)
+decimate2.set_option(rs.option.filter_magnitude, DECIMATION)
 global save_index
 save_index = 0
 
@@ -85,11 +117,16 @@ save_index = 0
 colorizer_1 = rs.colorizer()
 colorizer_2 = rs.colorizer()
 
-filters = [rs.disparity_transform(),
+filters = [
+                #rs.disparity_transform(),
                 rs.spatial_filter(),
-                rs.temporal_filter(),
-                rs.disparity_transform(False)]
-
+                #rs.temporal_filter(),
+                #rs.disparity_transform(False)
+                ]
+# if DISPARITY:
+#     filters.append(rs.disparity_transform())
+# if SPATIAL:
+#     rs.spatial_filter()
 def nothing(x):
     pass
 
@@ -142,12 +179,12 @@ def get_depth_data(frame_1, frame_2, color_frame_1, color_frame_2):
     # Apply colormap on depth image (image must be converted to 8-bit per pixel first)
 
     #NOTE This is what reduces the pointcloud density.
-    # depth_frame_1 = decimate1.process(depth_frame_1)
-    # depth_frame_2 = decimate2.process(depth_frame_2)
+    depth_frame_1 = decimate1.process(depth_frame_1)
+    depth_frame_2 = decimate2.process(depth_frame_2)
 
-    # for f in filters:
-    #         depth_frame_1 = f.process(depth_frame_1)
-    #         depth_frame_2 = f.process(depth_frame_2)
+    for f in filters:
+         depth_frame_1 = f.process(depth_frame_1)
+         depth_frame_2 = f.process(depth_frame_2)
 
     # Convert images to numpy arrays
 
@@ -308,8 +345,9 @@ finally:
     with zip_file:
         # writing each file one by one
         for file in filePaths:
+            arcname = file[file.rfind('/')+1:]
             print("Writing " + file ,end="...")
-            zip_file.write(file)
+            zip_file.write(file,arcname=arcname)
             os.remove(file)
             print("Removed from dir.")
         print(zip_dir_name+'.zip file is created successfully!')
