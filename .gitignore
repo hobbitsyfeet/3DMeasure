@@ -118,3 +118,5 @@ data/PRICT-28/series_7/.*
 *.ply
 *.pcd
 data
+*.json
+*.png
