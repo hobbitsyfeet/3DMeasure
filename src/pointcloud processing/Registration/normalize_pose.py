@@ -1,7 +1,7 @@
 from cloud_compare_icp import per_part_registration
-import pca
+from helper import pca
 
-import load
+from helper import load
 import open3d as o3d
 
 def normalize_pose(file_list_source, file_list_target):

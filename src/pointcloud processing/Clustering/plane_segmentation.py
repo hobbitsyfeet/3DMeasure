@@ -2,7 +2,7 @@ import numpy as np
 import pcl
 import random
 
-from load import get_file
+from helper.load import get_file
 
 import pcl.pcl_visualization
 

@@ -9,10 +9,10 @@ import copy
 
 import open3d as o3d
 import pyrealsense2 as rs2
-import o3d_select
+import helper.o3d_select
 
-from load import get_file
-from measure_cloud import manual_measure
+from helper.load import get_file
+from helper.measure_cloud import manual_measure
 
 
 def demo_crop_geometry():
