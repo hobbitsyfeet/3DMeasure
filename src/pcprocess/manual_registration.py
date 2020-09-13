@@ -131,15 +131,15 @@ def register(o3d_source_cloud, o3d_target_cloud):
         o3d_source_cloud, o3d_target_cloud, threshold, trans_init,
         o3d.registration.TransformationEstimationPointToPoint())
     draw_registration_result(o3d_source_cloud, o3d_target_cloud, reg_p2p.transformation)
-    source_temp = copy.deepcopy(o3d_source_cloud)
-    target_temp = copy.deepcopy(o3d_target_cloud)
+    #source_temp = copy.deepcopy(o3d_source_cloud)
+    #target_temp = copy.deepcopy(o3d_target_cloud)
     # source_temp.paint_uniform_color([1, 0.706, 0])
     # target_temp.paint_uniform_color([0, 0.651, 0.929])
-    source_temp.transform(reg_p2p.transformation)
+    #source_temp.transform(reg_p2p.transformation)
     # registered_cloud = source_temp + target_temp
-
-    
-    return source_temp, target_temp
+    print(reg_p2p.transformation)
+    return reg_p2p
+    #return source_temp, target_temp
 
 
 

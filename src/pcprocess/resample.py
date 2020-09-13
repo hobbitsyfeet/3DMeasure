@@ -43,4 +43,3 @@ if __name__ == "__main__":
         print("Finished Processing MLS")
         print(mls_points)
         output = "MLS_0-" + str(i) + ".pcd"
-        pcl.save_PointNormal(mls_points, output)

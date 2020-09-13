@@ -7,6 +7,8 @@ open3d-python ==0.7.0.0
 sklearn==0.0
 pandas==0.25.0
 matplotlib==3.1.1
+utils==1.0.1
+pysptools==0.15.0
 #pclpy==0.11.0 #note: only works python 3.6 - Windows
 #scikit-build==0.10.0
 

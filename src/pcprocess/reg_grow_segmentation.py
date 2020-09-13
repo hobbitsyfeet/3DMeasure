@@ -6,6 +6,7 @@ from pcl import pcl_visualization
 from load import get_file
 from time import sleep
 from copy import deepcopy
+import os
 def segment(pcl_cloud, smoothness, curve_thresh=1.0, ksearch=50, 
             neighbours=200, min_cluster=50, max_cluster=100000, 
             view=True):
@@ -77,8 +78,30 @@ def segment(pcl_cloud, smoothness, curve_thresh=1.0, ksearch=50,
 
 
 if __name__ == "__main__":
-    
-    cloud_path, cloud_format = get_file()
-    pcl_cloud = pcl.load(cloud_path, cloud_format)
-    # for i in range(400):
-    clusters = segment(pcl_cloud,3.3,view=True)
+
+    while(True):
+        cloud_path, cloud_format = get_file()
+
+    # for path in cloud_path:
+
+        folder_name = cloud_path[-13:-4]
+        cluster_index = 0
+        cluster_name = str(cluster_index)[-4:]
+        print("Cluster_" + str(cluster_index)[-4:] + "." + cloud_format)
+        pcl_cloud = pcl.load(cloud_path, cloud_format)
+        # for i in range(400):
+        clusters = segment(pcl_cloud,2.75, min_cluster=5, view=False)
+        
+        for cluster in clusters:
+            
+            # pcl.save(cluster, ("./data/PRICT-28/clusters/Cluster_" + str(cluster_index)[-4:] + "." + cloud_format), 
+            #         format=cloud_format)
+            try:
+                os.mkdir("F:/Data/Raccoon/Clean/Clustered/Right/81661206"+folder_name)
+            except:
+                pass
+            pcl.save(cluster, ("F:/Data/Raccoon/Clean/Clustered/Right/81661206"+folder_name+"/Cluster_" + str(cluster_index)[-4:] + "." + cloud_format), 
+                    format=cloud_format)
+            print("Saving ", end="")
+            print("Cluster_" + str(cluster_index)[-4:] + "." + cloud_format)
+            cluster_index += 1

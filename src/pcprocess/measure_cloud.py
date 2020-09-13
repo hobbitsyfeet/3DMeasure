@@ -110,16 +110,27 @@ def manual_measure(point_cloud):
 
     print(str(total_distance * 100) + " centimeters")
     print(str(total_distance) + " meters")
-    return total_distance, distance_segments
+    return total_distance, distance_segments, (p1,p2)
 
 if __name__ == "__main__":
+    import pandas
+
+    calculated_distance = []#meters
+    set_distance = [] #feet
+    length = [] #cm
+    body_part = []#string description
+    file_name =[] #string name for capture number and camera
+    note = []#notes about what the camera sees
+    
+
     print("Starting...")
 
     # Grab new intrinsics (may be changed by decimation)
     #angle = get_angle((10,1,1), (1,1,0) )
     #length = get_length(3,2,angle)
-    cloud_path, cloud_format = get_file()
-    cloud = o3d.io.read_point_cloud(cloud_path, format=cloud_format)
-    #intrinsics = read_intrinsics((cloud_path[:-4] + "_intrinsics.txt"))
-    length = manual_measure(cloud)
-    print("Stopping...")
+    while True:
+        cloud_path, cloud_format = get_file()
+        cloud = o3d.io.read_point_cloud(cloud_path, format=cloud_format)
+        #intrinsics = read_intrinsics((cloud_path[:-4] + "_intrinsics.txt"))
+        length = manual_measure(cloud)
+        print("Stopping...")
