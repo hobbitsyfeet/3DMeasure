@@ -1,7 +1,7 @@
 import subprocess
 import os
 import argparse
-import load
+from helper import load
 import ntpath
 import os.path
 

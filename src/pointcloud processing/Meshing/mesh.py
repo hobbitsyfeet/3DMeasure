@@ -5,7 +5,7 @@
 import numpy as np
 import pcl
 import random
-import load
+import helper.load
 
 
 def make_ConcaveHull(pcl_cloud):

@@ -3,7 +3,7 @@ import numpy as np
 import uuid
 from random import randrange
 from pcl import pcl_visualization
-from load import get_file
+from helper.load import get_file
 from time import sleep
 from copy import deepcopy
 import os

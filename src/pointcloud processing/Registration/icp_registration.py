@@ -10,7 +10,7 @@ import open3d as o3d
 import pcl
 import pcl.pcl_visualization
 
-from load import get_file
+from helper.load import get_file
 
 # int main (int argc, char** argv)
 

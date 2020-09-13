@@ -2,7 +2,7 @@
 
 import open3d as o3d
 import numpy as np
-from load import get_file
+from helper.load import get_file
 
 voxel_size = 0.02
 max_correspondence_distance_coarse = voxel_size * 15
