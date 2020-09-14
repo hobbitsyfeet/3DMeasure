@@ -9,3 +9,8 @@ This is useful since deep learning models can learn to segment this type of info
 #### Result Pose (white)
 <img src="/docs/photos/Pose_Registration_Result.jpg" width="324" height="324">
 
+#### How to use:
+Run normalize_pose.py `python normalize_pose.py`, the first folder will be the source set, and second folder will be the target set. Two selection windows will display one after the other when selected. The data to test this is supplied in `data/Stickman_Segmented`. 
+
+The output will be marked with the suffix __REGISTERED_ in the source pose folder. 
+Note: The visualization shows the Source and Target. The next visualization will show the Target and the Results.
