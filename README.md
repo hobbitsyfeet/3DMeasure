@@ -6,6 +6,9 @@
 
 ### [PCA Examples and Usefulness](https://github.com/hobbitsyfeet/3DMeasure/blob/master/src/Processing/Preprocessing/README.md#principal-comonent-analysis-pca)
 
+## Related Studies and Experiments
+### [Depth Camera Accuracy Outdoors on Taxidermy](https://github.com/hobbitsyfeet/3DMeasure/tree/master/docs/DepthCameras#depth-cameras)
+### [PointNet++ and PointCNN Outdoor Segmentation](https://github.com/hobbitsyfeet/3DMeasure/tree/master/docs/Reports#please-read-the-independent-study-report)
 ## Install PCL
 Install Point Cloud Library (WINDOWS). Follow the instructions on the [PCL github page](https://github.com/strawlab/python-pcl).
 
