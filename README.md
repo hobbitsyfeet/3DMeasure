@@ -2,7 +2,9 @@
 # 3DMeasure
 
 ## Featured Tools
-[Per-Part Rigid Registration for Pose Normalization](https://github.com/hobbitsyfeet/3DMeasure/tree/master/src/Processing/Registration#normalize-pose)
+### [Per-Part Rigid Registration for Pose Normalization](https://github.com/hobbitsyfeet/3DMeasure/tree/master/src/Processing/Registration#normalize-pose)
+
+### [PCA Examples and Usefulness](https://github.com/hobbitsyfeet/3DMeasure/blob/master/src/Processing/Preprocessing/README.md#pca)
 
 ## Install PCL
 Install Point Cloud Library (WINDOWS). Follow the instructions on the [PCL github page](https://github.com/strawlab/python-pcl).
