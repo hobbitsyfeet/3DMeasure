@@ -79,6 +79,7 @@ def per_part_registration(source_file_list, target_file_list, output_dir):
             del target_file_list[0]
         else:
             break
+        
 
 if __name__ == "__main__":
 

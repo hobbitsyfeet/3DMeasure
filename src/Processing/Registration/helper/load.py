@@ -10,7 +10,7 @@ def path_leaf(path):
     head, tail = ntpath.split(path)
     return tail or ntpath.basename(head)
 
-def get_files_from_folder(folder_path = None, extension="ply"):
+def get_files_from_folder(folder_path = None, extension="ply", keyword=""):
     """
     Gets all of the the specified type within the immediate folder (no deeper)
     """
@@ -26,8 +26,15 @@ def get_files_from_folder(folder_path = None, extension="ply"):
     #get all files with extension in file_path
     file_list = [f for f in glob.glob( folder_path+"/" + "*." + extension)]
 
-    return file_list
+    temp_filelist = []
+    for file in file_list:
+        if keyword is not "" and keyword in file:
+            temp_filelist.append(file)
 
+    if keyword is not "":
+        file_list = temp_filelist
+
+    return file_list, folder_path
 
 def get_file(file_path = None):
     """
