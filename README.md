@@ -3,12 +3,18 @@
 
 ## Featured Tools
 ### [Per-Part Rigid Registration for Pose Normalization](https://github.com/hobbitsyfeet/3DMeasure/tree/master/src/Processing/Registration#normalize-pose)
+<img src="/docs/photos/Source_Target.jpg" width="200" height="200"><img src="/docs/photos/Target_Result.jpg" width="200" height="200">
 
-### [PCA Examples and Usefulness](https://github.com/hobbitsyfeet/3DMeasure/blob/master/src/Processing/Preprocessing/README.md#principal-comonent-analysis-pca)
-
+### [PCA Examples and Use](https://github.com/hobbitsyfeet/3DMeasure/blob/master/src/Processing/Preprocessing/README.md#principal-comonent-analysis-pca)
+<img src="/docs/photos/Target_Result_PCA.jpg"  width="200" height="200"> <img src="/docs/photos/Target_Result_PCA3.jpg"  width="100" height="200">
 ## Related Studies and Experiments
 ### [Depth Camera Accuracy Outdoors on Taxidermy](https://github.com/hobbitsyfeet/3DMeasure/tree/master/docs/DepthCameras#depth-cameras)
+##### Kinect Azure / Realsense D415
+<img src ="/docs/DepthCameras/Distance(Kinect).PNG" width="300" height="100"><img src = "/docs/DepthCameras/Distance(Realsense).jpg"  width="300" height="100">
+
 ### [PointNet++ and PointCNN Outdoor Segmentation](https://github.com/hobbitsyfeet/3DMeasure/tree/master/docs/Reports#please-read-the-independent-study-report)
+<img src="https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/Reports/Figures/Network_Preds.jpg" width="250" height="150">
+
 ## Install PCL
 Install Point Cloud Library (WINDOWS). Follow the instructions on the [PCL github page](https://github.com/strawlab/python-pcl).
 
@@ -87,23 +93,3 @@ Follow these instructions from [conda forge](https://anaconda.org/conda-forge/pc
 To install this package (point cloud library) with conda run one of the [following](https://gis.stackexchange.com/questions/287773/installing-pcl-module-for-python-3-6-in-anaconda):
   
     conda install -c sirokujira python-pcl --channel conda-forge
-    
-    
-#
-# Photos
-#
-Original Cloud, ground removed (in pipeline)
-
-![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/2BearsBeforePipe.PNG)
-
-Clouds clustered and clusters selected
-
-![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/2Bears.PNG)
-
-Manual Registration
-
-![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/Regerestered_bear.PNG)
-
-Automatic Registration
-
-![Screenshot](https://github.com/hobbitsyfeet/3DMeasure/blob/master/docs/photos/Automatic_registration.PNG)
