@@ -1,4 +1,4 @@
-# PCA
+# Principal Comonent Analysis (PCA)
 PCA has been a very useful tool for dimentionality reduction. In this case, we only collect the vectors of the dimension reduction. 
 This results in 3 PCA vectors, where each vector describes one dimension of the object based on it's most significant measures. 
 PCA captures the most significant data in PCA1, and less as it goes on. The results of this is 3 perpendicular vectors descibing the object, where each dimension describes the longest, second longest and shortest dimension.
