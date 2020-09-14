@@ -8,7 +8,9 @@ This is useful since deep learning models can learn to segment this type of info
 <img src="/docs/photos/Source_Target.jpg" width="324" height="324"><img src="/docs/photos/Target_Result.jpg" width="324" height="324">
 
 #### How to use:
-Run normalize_pose.py `python normalize_pose.py`, the first folder will be the source set, and second folder will be the target set. Two selection windows will display one after the other when selected. The data to test this is supplied in `data/Stickman_Segmented`. 
+1) [Install Cloud Compare](http://www.danielgm.net/cc/release/)
+2) In `cloud_compare_icp.py` change the default path to your install path. `parser.add_argument('--cc_dir', default="F:/CloudCompare/", help='The location of CloudCompare install directory C:/CloudCompare')`
+3) Run normalize_pose.py `python normalize_pose.py`, the first folder will be the source set, and second folder will be the target set. Two selection windows will display one after the other when selected. The data to test this is supplied in `data/Stickman_Segmented`. 
 
 The output will be marked with the suffix __REGISTERED_ in the source pose folder. 
 Note: The visualization shows the Source and Target. The next visualization will show the Target and the Results.
