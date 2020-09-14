@@ -115,8 +115,8 @@ dmypy.json
 .vscode/settings.json
 *.dcm
 data/PRICT-28/series_7/.*
-*.ply
 *.pcd
-data
+# data
+Personal
 *.json
 *.png
