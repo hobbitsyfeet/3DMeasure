@@ -98,4 +98,3 @@ if __name__ == "__main__":
     o3d.io.write_point_cloud("./test_registration.pcd", out)
 
     draw_registration_result(source, target, reg_p2p.transformation)
-

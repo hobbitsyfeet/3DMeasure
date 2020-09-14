@@ -1,9 +1,9 @@
-from cloud_compare_icp import per_part_registration
-import pca
 import numpy as np
-
-import load
 import open3d as o3d
+
+from cloud_compare_icp import per_part_registration
+from helper import load, pca
+
 
 def get_length(vector):
     # Get the length of a 3D vector
@@ -68,5 +68,3 @@ if __name__ == "__main__":
 
     o3d.draw_geometries(o3d_obj)
     print("Complete")
-
-    

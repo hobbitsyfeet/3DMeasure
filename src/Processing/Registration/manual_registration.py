@@ -4,13 +4,13 @@
 
 # examples/Python/Advanced/interactive_visualization.py
 
-import numpy as np
 import copy
 
+import numpy as np
 import open3d as o3d
 import pyrealsense2 as rs2
-import helper.o3d_select
 
+import helper.o3d_select
 from helper.load import get_file
 from helper.measure_cloud import manual_measure
 

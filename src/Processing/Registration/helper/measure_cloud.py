@@ -1,7 +1,7 @@
 import pyrealsense2 as rs2
 import open3d as o3d
 import numpy as np
-from load import get_file
+from helper.load import get_file
 
 def get_angle(p1, p2):
     '''

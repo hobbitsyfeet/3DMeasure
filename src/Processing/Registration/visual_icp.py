@@ -1,20 +1,21 @@
 # examples/Python/Advanced/non_blocking_visualization.py
 
-import load
-import open3d as o3d
-import numpy as np
 import copy
-import pcl
-import convert
 
-from sklearn.decomposition import PCA
-import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+import open3d as o3d
+import pandas as pd
+import pcl
 from mpl_toolkits.mplot3d import Axes3D
+from sklearn.decomposition import PCA
 
+from helper import convert
 #This downsamples and calculates surface normals
-from global_registration import preprocess_point_cloud
-from global_registration import execute_global_registration
+from global_registration import (execute_global_registration,
+                                 preprocess_point_cloud)
+from helper import load
+
 
 def get_pca(o3d_cloud):
     pca = PCA(n_components=3)

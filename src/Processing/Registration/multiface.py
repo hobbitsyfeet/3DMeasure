@@ -1,7 +1,8 @@
 # examples/Python/Advanced/multiway_registration.py
 
-import open3d as o3d
 import numpy as np
+import open3d as o3d
+
 from helper.load import get_file
 
 voxel_size = 0.02
