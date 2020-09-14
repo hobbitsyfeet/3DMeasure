@@ -1,8 +1,11 @@
 # Depth Cameras
 
 ### Kinect Azure and Realsense D415
-<img src ="docs/DepthCameras/Distance(Kinect).PNG" width="500" height="300">
-<img src = "docs/DepthCameras/Distance(Realsense).jpg"  width="500" height="300">
+##### Kinect Azure
+<img src ="Distance(Kinect).PNG" width="500" height="300">
+
+##### Realsense D415
+<img src = "Distance(Realsense).jpg"  width="500" height="300">
 
 These results show the range a camera can capture a taxidermy raccoon arm (2cm width) at different ranges. Time of day and location vary. Both outdoors. Kinect was during dusk, while realsense was in the shade of the building. 
 
