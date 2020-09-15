@@ -13,3 +13,7 @@ Notice on the sections that do not contain a "longest" dimension, PCA still desc
 <img src="/docs/photos/Target_Result_PCA.jpg"  width="324" height="324"> <img src="/docs/photos/Target_Result_PCA3.jpg"  width="200" height="324">
 
 ##### Notice the usefulness of PCA to determine centroid, and initial directionality for a Global Registration alignment.
+
+PCA was used to try and collect the length of the Raccoon's Right arm. This demonstrates the importance of proper segmentation.
+
+<img src="/docs/photos/Right_Arm_PCA.jpg"  width="324" height="324"> <img src="/docs/photos/Target_Result_PCA3.jpg"  width="200" height="324">
