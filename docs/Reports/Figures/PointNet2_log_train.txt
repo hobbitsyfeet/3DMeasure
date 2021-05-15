@@ -1,1822 +1,1018 @@
-Namespace(batch_size=8, decay_rate=0.7, decay_step=200000, gpu=0, learning_rate=0.001, log_dir='log', max_epoch=201, model='pointnet2_part_seg', momentum=0.9, num_point=2048, optimizer='adam')
-pid: 3906
-EPOCH 000
+Namespace(batch_size=8, decay_rate=0.7, decay_step=200000, gpu=0, learning_rate=0.001, log_dir='log_eval', max_epoch=201, model='pointnet2_part_seg', momentum=0.9, num_point=2048, optimizer='adam')
+pid: 7382
 ---- EPOCH 000 EVALUATION ----
 000/004
-eval_mean_loss: 2.608032
-eval_accuracy: 0.566309
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.261524
-eval mean mIoU: 0.261524
-eval mean mIoU (all shapes): 0.261524
-Model saved in file: log/model.ckpt
-EPOCH 001
+eval_mean_loss: 27.527399
+eval_accuracy: 0.424160
+eval mean mIoU: 0.149493
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 001 EVALUATION ----
 000/004
-eval_mean_loss: 1.788271
-eval_accuracy: 0.700391
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.451230
-eval mean mIoU: 0.451230
-eval mean mIoU (all shapes): 0.451230
-EPOCH 002
+eval_mean_loss: 3.331595
+eval_accuracy: 0.631367
+eval mean mIoU: 0.193426
 ---- EPOCH 002 EVALUATION ----
 000/004
-eval_mean_loss: 1.246927
-eval_accuracy: 0.709102
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.484931
-eval mean mIoU: 0.484931
-eval mean mIoU (all shapes): 0.484931
-EPOCH 003
+eval_mean_loss: 2.171040
+eval_accuracy: 0.707129
+eval mean mIoU: 0.177867
 ---- EPOCH 003 EVALUATION ----
 000/004
-eval_mean_loss: 0.996032
-eval_accuracy: 0.771563
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.578472
-eval mean mIoU: 0.578472
-eval mean mIoU (all shapes): 0.578472
-EPOCH 004
+eval_mean_loss: 1.268997
+eval_accuracy: 0.719297
+eval mean mIoU: 0.244412
 ---- EPOCH 004 EVALUATION ----
 000/004
-eval_mean_loss: 0.887476
-eval_accuracy: 0.797891
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.624848
-eval mean mIoU: 0.624848
-eval mean mIoU (all shapes): 0.624848
-EPOCH 005
+eval_mean_loss: 1.684834
+eval_accuracy: 0.640859
+eval mean mIoU: 0.269318
 ---- EPOCH 005 EVALUATION ----
 000/004
-eval_mean_loss: 0.594083
-eval_accuracy: 0.827266
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.660256
-eval mean mIoU: 0.660256
-eval mean mIoU (all shapes): 0.660256
-EPOCH 006
+eval_mean_loss: 0.865790
+eval_accuracy: 0.828027
+eval mean mIoU: 0.512187
 ---- EPOCH 006 EVALUATION ----
 000/004
-eval_mean_loss: 0.411864
-eval_accuracy: 0.887188
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.702793
-eval mean mIoU: 0.702793
-eval mean mIoU (all shapes): 0.702793
-EPOCH 007
+eval_mean_loss: 3.664843
+eval_accuracy: 0.823477
+eval mean mIoU: 0.509426
 ---- EPOCH 007 EVALUATION ----
 000/004
-eval_mean_loss: 0.354121
-eval_accuracy: 0.885156
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.679804
-eval mean mIoU: 0.679804
-eval mean mIoU (all shapes): 0.679804
-EPOCH 008
+eval_mean_loss: 413.695616
+eval_accuracy: 0.728672
+eval mean mIoU: 0.521318
 ---- EPOCH 008 EVALUATION ----
 000/004
-eval_mean_loss: 0.452831
-eval_accuracy: 0.873887
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.699772
-eval mean mIoU: 0.699772
-eval mean mIoU (all shapes): 0.699772
-EPOCH 009
+eval_mean_loss: 0.491402
+eval_accuracy: 0.824199
+eval mean mIoU: 0.487997
 ---- EPOCH 009 EVALUATION ----
 000/004
-eval_mean_loss: 0.225781
-eval_accuracy: 0.923770
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.767596
-eval mean mIoU: 0.767596
-eval mean mIoU (all shapes): 0.767596
-EPOCH 010
+eval_mean_loss: 0.586231
+eval_accuracy: 0.789062
+eval mean mIoU: 0.416991
 ---- EPOCH 010 EVALUATION ----
 000/004
-eval_mean_loss: 0.246073
-eval_accuracy: 0.920781
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.788366
-eval mean mIoU: 0.788366
-eval mean mIoU (all shapes): 0.788366
-EPOCH 011
+eval_mean_loss: 0.410680
+eval_accuracy: 0.867461
+eval mean mIoU: 0.609070
 ---- EPOCH 011 EVALUATION ----
 000/004
-eval_mean_loss: 0.256669
-eval_accuracy: 0.910098
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.775463
-eval mean mIoU: 0.775463
-eval mean mIoU (all shapes): 0.775463
-EPOCH 012
+eval_mean_loss: 0.506572
+eval_accuracy: 0.846621
+eval mean mIoU: 0.559550
 ---- EPOCH 012 EVALUATION ----
 000/004
-eval_mean_loss: 0.271269
-eval_accuracy: 0.920352
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.807141
-eval mean mIoU: 0.807141
-eval mean mIoU (all shapes): 0.807141
-EPOCH 013
+eval_mean_loss: 0.451498
+eval_accuracy: 0.868008
+eval mean mIoU: 0.608832
 ---- EPOCH 013 EVALUATION ----
 000/004
-eval_mean_loss: 0.395200
-eval_accuracy: 0.891250
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.793033
-eval mean mIoU: 0.793033
-eval mean mIoU (all shapes): 0.793033
-EPOCH 014
+eval_mean_loss: 32.728944
+eval_accuracy: 0.712656
+eval mean mIoU: 0.198437
 ---- EPOCH 014 EVALUATION ----
 000/004
-eval_mean_loss: 0.209770
-eval_accuracy: 0.934824
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.815036
-eval mean mIoU: 0.815036
-eval mean mIoU (all shapes): 0.815036
-EPOCH 015
+eval_mean_loss: 737.257324
+eval_accuracy: 0.674492
+eval mean mIoU: 0.232302
 ---- EPOCH 015 EVALUATION ----
 000/004
-eval_mean_loss: 0.148195
-eval_accuracy: 0.951465
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.843539
-eval mean mIoU: 0.843539
-eval mean mIoU (all shapes): 0.843539
-EPOCH 016
+eval_mean_loss: 0.622184
+eval_accuracy: 0.808945
+eval mean mIoU: 0.556030
 ---- EPOCH 016 EVALUATION ----
 000/004
-eval_mean_loss: 0.292813
-eval_accuracy: 0.901680
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.804847
-eval mean mIoU: 0.804847
-eval mean mIoU (all shapes): 0.804847
-EPOCH 017
+eval_mean_loss: 0.421920
+eval_accuracy: 0.833223
+eval mean mIoU: 0.518208
 ---- EPOCH 017 EVALUATION ----
 000/004
-eval_mean_loss: 0.184213
-eval_accuracy: 0.940332
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.833286
-eval mean mIoU: 0.833286
-eval mean mIoU (all shapes): 0.833286
-EPOCH 018
+eval_mean_loss: 0.426701
+eval_accuracy: 0.876680
+eval mean mIoU: 0.639657
 ---- EPOCH 018 EVALUATION ----
 000/004
-eval_mean_loss: 0.139343
-eval_accuracy: 0.951699
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.857804
-eval mean mIoU: 0.857804
-eval mean mIoU (all shapes): 0.857804
-EPOCH 019
+eval_mean_loss: 850775.863770
+eval_accuracy: 0.517402
+eval mean mIoU: 0.260299
 ---- EPOCH 019 EVALUATION ----
 000/004
-eval_mean_loss: 0.280932
-eval_accuracy: 0.895762
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.841522
-eval mean mIoU: 0.841522
-eval mean mIoU (all shapes): 0.841522
-EPOCH 020
+eval_mean_loss: 1.252866
+eval_accuracy: 0.890371
+eval mean mIoU: 0.689593
 ---- EPOCH 020 EVALUATION ----
 000/004
-eval_mean_loss: 0.123275
-eval_accuracy: 0.957617
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.888405
-eval mean mIoU: 0.888405
-eval mean mIoU (all shapes): 0.888405
-Model saved in file: log/model.ckpt
-EPOCH 021
+eval_mean_loss: 0.361336
+eval_accuracy: 0.889023
+eval mean mIoU: 0.663890
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 021 EVALUATION ----
 000/004
-eval_mean_loss: 0.209423
-eval_accuracy: 0.922461
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.844239
-eval mean mIoU: 0.844239
-eval mean mIoU (all shapes): 0.844239
-EPOCH 022
+eval_mean_loss: 0.405033
+eval_accuracy: 0.851680
+eval mean mIoU: 0.566289
 ---- EPOCH 022 EVALUATION ----
 000/004
-eval_mean_loss: 0.150863
-eval_accuracy: 0.949609
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.864195
-eval mean mIoU: 0.864195
-eval mean mIoU (all shapes): 0.864195
-EPOCH 023
+eval_mean_loss: 0.375866
+eval_accuracy: 0.871016
+eval mean mIoU: 0.611735
 ---- EPOCH 023 EVALUATION ----
 000/004
-eval_mean_loss: 0.110120
-eval_accuracy: 0.960840
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.908662
-eval mean mIoU: 0.908662
-eval mean mIoU (all shapes): 0.908662
-EPOCH 024
+eval_mean_loss: 1.408687
+eval_accuracy: 0.653750
+eval mean mIoU: 0.397917
 ---- EPOCH 024 EVALUATION ----
 000/004
-eval_mean_loss: 0.143859
-eval_accuracy: 0.952949
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.880568
-eval mean mIoU: 0.880568
-eval mean mIoU (all shapes): 0.880568
-EPOCH 025
+eval_mean_loss: 144.896798
+eval_accuracy: 0.155625
+eval mean mIoU: 0.085533
 ---- EPOCH 025 EVALUATION ----
 000/004
-eval_mean_loss: 0.112116
-eval_accuracy: 0.967266
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.894212
-eval mean mIoU: 0.894212
-eval mean mIoU (all shapes): 0.894212
-EPOCH 026
+eval_mean_loss: 0.404690
+eval_accuracy: 0.925957
+eval mean mIoU: 0.763493
 ---- EPOCH 026 EVALUATION ----
 000/004
-eval_mean_loss: 0.138799
-eval_accuracy: 0.956387
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.880095
-eval mean mIoU: 0.880095
-eval mean mIoU (all shapes): 0.880095
-EPOCH 027
+eval_mean_loss: 0.256322
+eval_accuracy: 0.922090
+eval mean mIoU: 0.745519
 ---- EPOCH 027 EVALUATION ----
 000/004
-eval_mean_loss: 0.131762
-eval_accuracy: 0.960488
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.889351
-eval mean mIoU: 0.889351
-eval mean mIoU (all shapes): 0.889351
-EPOCH 028
+eval_mean_loss: 14383404202.666666
+eval_accuracy: 0.454609
+eval mean mIoU: 0.326384
 ---- EPOCH 028 EVALUATION ----
 000/004
-eval_mean_loss: 0.101520
-eval_accuracy: 0.966816
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.900016
-eval mean mIoU: 0.900016
-eval mean mIoU (all shapes): 0.900016
-EPOCH 029
+eval_mean_loss: 1.136294
+eval_accuracy: 0.898828
+eval mean mIoU: 0.681441
 ---- EPOCH 029 EVALUATION ----
 000/004
-eval_mean_loss: 0.101180
-eval_accuracy: 0.963125
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.893744
-eval mean mIoU: 0.893744
-eval mean mIoU (all shapes): 0.893744
-EPOCH 030
+eval_mean_loss: 0.174781
+eval_accuracy: 0.949434
+eval mean mIoU: 0.817685
 ---- EPOCH 030 EVALUATION ----
 000/004
-eval_mean_loss: 0.118562
-eval_accuracy: 0.960625
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.890782
-eval mean mIoU: 0.890782
-eval mean mIoU (all shapes): 0.890782
-EPOCH 031
+eval_mean_loss: 0.148703
+eval_accuracy: 0.947930
+eval mean mIoU: 0.817487
 ---- EPOCH 031 EVALUATION ----
 000/004
-eval_mean_loss: 0.093446
-eval_accuracy: 0.965898
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.910325
-eval mean mIoU: 0.910325
-eval mean mIoU (all shapes): 0.910325
-EPOCH 032
+eval_mean_loss: 0.172662
+eval_accuracy: 0.948945
+eval mean mIoU: 0.809717
 ---- EPOCH 032 EVALUATION ----
 000/004
-eval_mean_loss: 0.156085
-eval_accuracy: 0.950137
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.862194
-eval mean mIoU: 0.862194
-eval mean mIoU (all shapes): 0.862194
-EPOCH 033
+eval_mean_loss: 0.181280
+eval_accuracy: 0.943672
+eval mean mIoU: 0.820879
 ---- EPOCH 033 EVALUATION ----
 000/004
-eval_mean_loss: 0.112360
-eval_accuracy: 0.961387
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.909461
-eval mean mIoU: 0.909461
-eval mean mIoU (all shapes): 0.909461
-EPOCH 034
+eval_mean_loss: 0.147171
+eval_accuracy: 0.948477
+eval mean mIoU: 0.823874
 ---- EPOCH 034 EVALUATION ----
 000/004
-eval_mean_loss: 0.065893
-eval_accuracy: 0.976562
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.929054
-eval mean mIoU: 0.929054
-eval mean mIoU (all shapes): 0.929054
-EPOCH 035
+eval_mean_loss: 0.156350
+eval_accuracy: 0.954434
+eval mean mIoU: 0.833223
 ---- EPOCH 035 EVALUATION ----
 000/004
-eval_mean_loss: 0.063586
-eval_accuracy: 0.976641
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.924995
-eval mean mIoU: 0.924995
-eval mean mIoU (all shapes): 0.924995
-EPOCH 036
+eval_mean_loss: 0.172967
+eval_accuracy: 0.944785
+eval mean mIoU: 0.809486
 ---- EPOCH 036 EVALUATION ----
 000/004
-eval_mean_loss: 0.096054
-eval_accuracy: 0.962266
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.898307
-eval mean mIoU: 0.898307
-eval mean mIoU (all shapes): 0.898307
-EPOCH 037
+eval_mean_loss: 0.142160
+eval_accuracy: 0.955508
+eval mean mIoU: 0.828401
 ---- EPOCH 037 EVALUATION ----
 000/004
-eval_mean_loss: 0.209677
-eval_accuracy: 0.943047
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.849385
-eval mean mIoU: 0.849385
-eval mean mIoU (all shapes): 0.849385
-EPOCH 038
+eval_mean_loss: 0.157191
+eval_accuracy: 0.941465
+eval mean mIoU: 0.812685
 ---- EPOCH 038 EVALUATION ----
 000/004
-eval_mean_loss: 0.118257
-eval_accuracy: 0.963574
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.890116
-eval mean mIoU: 0.890116
-eval mean mIoU (all shapes): 0.890116
-EPOCH 039
+eval_mean_loss: 0.137656
+eval_accuracy: 0.949316
+eval mean mIoU: 0.832534
 ---- EPOCH 039 EVALUATION ----
 000/004
-eval_mean_loss: 0.095728
-eval_accuracy: 0.966504
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.895167
-eval mean mIoU: 0.895167
-eval mean mIoU (all shapes): 0.895167
-EPOCH 040
+eval_mean_loss: 0.180554
+eval_accuracy: 0.924824
+eval mean mIoU: 0.857048
 ---- EPOCH 040 EVALUATION ----
 000/004
-eval_mean_loss: 0.157374
-eval_accuracy: 0.945645
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.877806
-eval mean mIoU: 0.877806
-eval mean mIoU (all shapes): 0.877806
-Model saved in file: log/model.ckpt
-EPOCH 041
+eval_mean_loss: 0.171792
+eval_accuracy: 0.935020
+eval mean mIoU: 0.821148
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 041 EVALUATION ----
 000/004
-eval_mean_loss: 0.096104
-eval_accuracy: 0.964297
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.918998
-eval mean mIoU: 0.918998
-eval mean mIoU (all shapes): 0.918998
-EPOCH 042
+eval_mean_loss: 0.191870
+eval_accuracy: 0.925957
+eval mean mIoU: 0.765146
 ---- EPOCH 042 EVALUATION ----
 000/004
-eval_mean_loss: 0.104635
-eval_accuracy: 0.972949
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.911878
-eval mean mIoU: 0.911878
-eval mean mIoU (all shapes): 0.911878
-EPOCH 043
+eval_mean_loss: 0.127004
+eval_accuracy: 0.949102
+eval mean mIoU: 0.835069
 ---- EPOCH 043 EVALUATION ----
 000/004
-eval_mean_loss: 0.127724
-eval_accuracy: 0.961504
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.888150
-eval mean mIoU: 0.888150
-eval mean mIoU (all shapes): 0.888150
-EPOCH 044
+eval_mean_loss: 0.170379
+eval_accuracy: 0.935664
+eval mean mIoU: 0.807260
 ---- EPOCH 044 EVALUATION ----
 000/004
-eval_mean_loss: 0.096243
-eval_accuracy: 0.968184
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.905491
-eval mean mIoU: 0.905491
-eval mean mIoU (all shapes): 0.905491
-EPOCH 045
+eval_mean_loss: 0.155507
+eval_accuracy: 0.948926
+eval mean mIoU: 0.827288
 ---- EPOCH 045 EVALUATION ----
 000/004
-eval_mean_loss: 0.076696
-eval_accuracy: 0.976055
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.916891
-eval mean mIoU: 0.916891
-eval mean mIoU (all shapes): 0.916891
-EPOCH 046
+eval_mean_loss: 0.732137
+eval_accuracy: 0.769062
+eval mean mIoU: 0.564924
 ---- EPOCH 046 EVALUATION ----
 000/004
-eval_mean_loss: 0.082623
-eval_accuracy: 0.975566
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.930983
-eval mean mIoU: 0.930983
-eval mean mIoU (all shapes): 0.930983
-EPOCH 047
+eval_mean_loss: 24.761580
+eval_accuracy: 0.509062
+eval mean mIoU: 0.408575
 ---- EPOCH 047 EVALUATION ----
 000/004
-eval_mean_loss: 0.061131
-eval_accuracy: 0.977949
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.931261
-eval mean mIoU: 0.931261
-eval mean mIoU (all shapes): 0.931261
-EPOCH 048
+eval_mean_loss: 3.143767
+eval_accuracy: 0.672656
+eval mean mIoU: 0.598113
 ---- EPOCH 048 EVALUATION ----
 000/004
-eval_mean_loss: 0.061345
-eval_accuracy: 0.979023
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.928359
-eval mean mIoU: 0.928359
-eval mean mIoU (all shapes): 0.928359
-EPOCH 049
+eval_mean_loss: 0.237568
+eval_accuracy: 0.923848
+eval mean mIoU: 0.756995
 ---- EPOCH 049 EVALUATION ----
 000/004
-eval_mean_loss: 0.111616
-eval_accuracy: 0.961406
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.933071
-eval mean mIoU: 0.933071
-eval mean mIoU (all shapes): 0.933071
-EPOCH 050
+eval_mean_loss: 88750912.000000
+eval_accuracy: 0.280449
+eval mean mIoU: 0.182820
 ---- EPOCH 050 EVALUATION ----
 000/004
-eval_mean_loss: 0.054846
-eval_accuracy: 0.982949
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.944584
-eval mean mIoU: 0.944584
-eval mean mIoU (all shapes): 0.944584
-EPOCH 051
+eval_mean_loss: 0.288238
+eval_accuracy: 0.904902
+eval mean mIoU: 0.798092
 ---- EPOCH 051 EVALUATION ----
 000/004
-eval_mean_loss: 0.098775
-eval_accuracy: 0.964102
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.899560
-eval mean mIoU: 0.899560
-eval mean mIoU (all shapes): 0.899560
-EPOCH 052
+eval_mean_loss: 113.200252
+eval_accuracy: 0.867871
+eval mean mIoU: 0.800890
 ---- EPOCH 052 EVALUATION ----
 000/004
-eval_mean_loss: 0.043148
-eval_accuracy: 0.985664
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.955438
-eval mean mIoU: 0.955438
-eval mean mIoU (all shapes): 0.955438
-EPOCH 053
+eval_mean_loss: 0.163086
+eval_accuracy: 0.938516
+eval mean mIoU: 0.840446
 ---- EPOCH 053 EVALUATION ----
 000/004
-eval_mean_loss: 0.051203
-eval_accuracy: 0.978359
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.935163
-eval mean mIoU: 0.935163
-eval mean mIoU (all shapes): 0.935163
-EPOCH 054
+eval_mean_loss: 0.188833
+eval_accuracy: 0.925703
+eval mean mIoU: 0.853863
 ---- EPOCH 054 EVALUATION ----
 000/004
-eval_mean_loss: 0.061446
-eval_accuracy: 0.978574
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.939457
-eval mean mIoU: 0.939457
-eval mean mIoU (all shapes): 0.939457
-EPOCH 055
+eval_mean_loss: 0.273164
+eval_accuracy: 0.883516
+eval mean mIoU: 0.763307
 ---- EPOCH 055 EVALUATION ----
 000/004
-eval_mean_loss: 0.064660
-eval_accuracy: 0.977773
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.943061
-eval mean mIoU: 0.943061
-eval mean mIoU (all shapes): 0.943061
-EPOCH 056
+eval_mean_loss: 0.980433
+eval_accuracy: 0.721699
+eval mean mIoU: 0.433470
 ---- EPOCH 056 EVALUATION ----
 000/004
-eval_mean_loss: 0.028725
-eval_accuracy: 0.989707
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.964946
-eval mean mIoU: 0.964946
-eval mean mIoU (all shapes): 0.964946
-EPOCH 057
+eval_mean_loss: 1806843392.000000
+eval_accuracy: 0.472559
+eval mean mIoU: 0.318417
 ---- EPOCH 057 EVALUATION ----
 000/004
-eval_mean_loss: 0.029180
-eval_accuracy: 0.989434
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.969245
-eval mean mIoU: 0.969245
-eval mean mIoU (all shapes): 0.969245
-EPOCH 058
+eval_mean_loss: 0.619918
+eval_accuracy: 0.878574
+eval mean mIoU: 0.821340
 ---- EPOCH 058 EVALUATION ----
 000/004
-eval_mean_loss: 0.035606
-eval_accuracy: 0.987637
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.966159
-eval mean mIoU: 0.966159
-eval mean mIoU (all shapes): 0.966159
-EPOCH 059
+eval_mean_loss: 2.854765
+eval_accuracy: 0.947598
+eval mean mIoU: 0.832735
 ---- EPOCH 059 EVALUATION ----
 000/004
-eval_mean_loss: 0.024032
-eval_accuracy: 0.990859
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.974408
-eval mean mIoU: 0.974408
-eval mean mIoU (all shapes): 0.974408
-EPOCH 060
+eval_mean_loss: 0.194326
+eval_accuracy: 0.952578
+eval mean mIoU: 0.863125
 ---- EPOCH 060 EVALUATION ----
 000/004
-eval_mean_loss: 0.044778
-eval_accuracy: 0.983203
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.956041
-eval mean mIoU: 0.956041
-eval mean mIoU (all shapes): 0.956041
-Model saved in file: log/model.ckpt
-EPOCH 061
+eval_mean_loss: 0.304657
+eval_accuracy: 0.876094
+eval mean mIoU: 0.817185
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 061 EVALUATION ----
 000/004
-eval_mean_loss: 0.057348
-eval_accuracy: 0.978926
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.948034
-eval mean mIoU: 0.948034
-eval mean mIoU (all shapes): 0.948034
-EPOCH 062
+eval_mean_loss: 0.394501
+eval_accuracy: 0.822637
+eval mean mIoU: 0.726221
 ---- EPOCH 062 EVALUATION ----
 000/004
-eval_mean_loss: 0.027693
-eval_accuracy: 0.989766
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.970269
-eval mean mIoU: 0.970269
-eval mean mIoU (all shapes): 0.970269
-EPOCH 063
+eval_mean_loss: 0.148796
+eval_accuracy: 0.945059
+eval mean mIoU: 0.835592
 ---- EPOCH 063 EVALUATION ----
 000/004
-eval_mean_loss: 0.017253
-eval_accuracy: 0.993359
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980645
-eval mean mIoU: 0.980645
-eval mean mIoU (all shapes): 0.980645
-EPOCH 064
+eval_mean_loss: 0.505092
+eval_accuracy: 0.832734
+eval mean mIoU: 0.526113
 ---- EPOCH 064 EVALUATION ----
 000/004
-eval_mean_loss: 0.016337
-eval_accuracy: 0.994277
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.979561
-eval mean mIoU: 0.979561
-eval mean mIoU (all shapes): 0.979561
-EPOCH 065
+eval_mean_loss: 24.685832
+eval_accuracy: 0.102266
+eval mean mIoU: 0.025566
 ---- EPOCH 065 EVALUATION ----
 000/004
-eval_mean_loss: 0.034104
-eval_accuracy: 0.988164
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.958818
-eval mean mIoU: 0.958818
-eval mean mIoU (all shapes): 0.958818
-EPOCH 066
+eval_mean_loss: 60.310304
+eval_accuracy: 0.087910
+eval mean mIoU: 0.021978
 ---- EPOCH 066 EVALUATION ----
 000/004
-eval_mean_loss: 0.027058
-eval_accuracy: 0.990859
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.969224
-eval mean mIoU: 0.969224
-eval mean mIoU (all shapes): 0.969224
-EPOCH 067
+eval_mean_loss: 72.239919
+eval_accuracy: 0.104453
+eval mean mIoU: 0.026113
 ---- EPOCH 067 EVALUATION ----
 000/004
-eval_mean_loss: 0.024535
-eval_accuracy: 0.991523
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.973612
-eval mean mIoU: 0.973612
-eval mean mIoU (all shapes): 0.973612
-EPOCH 068
+eval_mean_loss: 16.873405
+eval_accuracy: 0.087754
+eval mean mIoU: 0.021938
 ---- EPOCH 068 EVALUATION ----
 000/004
-eval_mean_loss: 0.028734
-eval_accuracy: 0.989277
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.972866
-eval mean mIoU: 0.972866
-eval mean mIoU (all shapes): 0.972866
-EPOCH 069
+eval_mean_loss: 1.597303
+eval_accuracy: 0.805527
+eval mean mIoU: 0.472299
 ---- EPOCH 069 EVALUATION ----
 000/004
-eval_mean_loss: 0.024860
-eval_accuracy: 0.989453
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.960351
-eval mean mIoU: 0.960351
-eval mean mIoU (all shapes): 0.960351
-EPOCH 070
+eval_mean_loss: 8.328566
+eval_accuracy: 0.088164
+eval mean mIoU: 0.022041
 ---- EPOCH 070 EVALUATION ----
 000/004
-eval_mean_loss: 0.027056
-eval_accuracy: 0.989863
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.961456
-eval mean mIoU: 0.961456
-eval mean mIoU (all shapes): 0.961456
-EPOCH 071
+eval_mean_loss: 0.716303
+eval_accuracy: 0.810000
+eval mean mIoU: 0.453557
 ---- EPOCH 071 EVALUATION ----
 000/004
-eval_mean_loss: 0.042889
-eval_accuracy: 0.985527
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.941118
-eval mean mIoU: 0.941118
-eval mean mIoU (all shapes): 0.941118
-EPOCH 072
+eval_mean_loss: 0.280184
+eval_accuracy: 0.905664
+eval mean mIoU: 0.803687
 ---- EPOCH 072 EVALUATION ----
 000/004
-eval_mean_loss: 0.041697
-eval_accuracy: 0.983945
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.952676
-eval mean mIoU: 0.952676
-eval mean mIoU (all shapes): 0.952676
-EPOCH 073
+eval_mean_loss: 1.101060
+eval_accuracy: 0.664941
+eval mean mIoU: 0.426312
 ---- EPOCH 073 EVALUATION ----
 000/004
-eval_mean_loss: 0.028732
-eval_accuracy: 0.986855
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.953873
-eval mean mIoU: 0.953873
-eval mean mIoU (all shapes): 0.953873
-EPOCH 074
+eval_mean_loss: 0.314946
+eval_accuracy: 0.864941
+eval mean mIoU: 0.793249
 ---- EPOCH 074 EVALUATION ----
 000/004
-eval_mean_loss: 0.029856
-eval_accuracy: 0.988691
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.959452
-eval mean mIoU: 0.959452
-eval mean mIoU (all shapes): 0.959452
-EPOCH 075
+eval_mean_loss: 0.144014
+eval_accuracy: 0.950371
+eval mean mIoU: 0.860235
 ---- EPOCH 075 EVALUATION ----
 000/004
-eval_mean_loss: 0.026178
-eval_accuracy: 0.989609
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.960028
-eval mean mIoU: 0.960028
-eval mean mIoU (all shapes): 0.960028
-EPOCH 076
+eval_mean_loss: 0.955969
+eval_accuracy: 0.798867
+eval mean mIoU: 0.430861
 ---- EPOCH 076 EVALUATION ----
 000/004
-eval_mean_loss: 0.021978
-eval_accuracy: 0.992207
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.976718
-eval mean mIoU: 0.976718
-eval mean mIoU (all shapes): 0.976718
-EPOCH 077
+eval_mean_loss: 0.373088
+eval_accuracy: 0.875508
+eval mean mIoU: 0.652779
 ---- EPOCH 077 EVALUATION ----
 000/004
-eval_mean_loss: 0.022779
-eval_accuracy: 0.991230
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.974440
-eval mean mIoU: 0.974440
-eval mean mIoU (all shapes): 0.974440
-EPOCH 078
+eval_mean_loss: 0.341869
+eval_accuracy: 0.852227
+eval mean mIoU: 0.813795
 ---- EPOCH 078 EVALUATION ----
 000/004
-eval_mean_loss: 0.026317
-eval_accuracy: 0.988926
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.965142
-eval mean mIoU: 0.965142
-eval mean mIoU (all shapes): 0.965142
-EPOCH 079
+eval_mean_loss: 0.211161
+eval_accuracy: 0.943164
+eval mean mIoU: 0.864109
 ---- EPOCH 079 EVALUATION ----
 000/004
-eval_mean_loss: 0.032243
-eval_accuracy: 0.988516
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.957667
-eval mean mIoU: 0.957667
-eval mean mIoU (all shapes): 0.957667
-EPOCH 080
+eval_mean_loss: 0.137827
+eval_accuracy: 0.959727
+eval mean mIoU: 0.869841
 ---- EPOCH 080 EVALUATION ----
 000/004
-eval_mean_loss: 0.031746
-eval_accuracy: 0.985723
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.953267
-eval mean mIoU: 0.953267
-eval mean mIoU (all shapes): 0.953267
-Model saved in file: log/model.ckpt
-EPOCH 081
+eval_mean_loss: 0.124169
+eval_accuracy: 0.953887
+eval mean mIoU: 0.892368
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 081 EVALUATION ----
 000/004
-eval_mean_loss: 0.029095
-eval_accuracy: 0.988535
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.960747
-eval mean mIoU: 0.960747
-eval mean mIoU (all shapes): 0.960747
-EPOCH 082
+eval_mean_loss: 0.436670
+eval_accuracy: 0.865645
+eval mean mIoU: 0.658432
 ---- EPOCH 082 EVALUATION ----
 000/004
-eval_mean_loss: 0.047521
-eval_accuracy: 0.985273
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.944537
-eval mean mIoU: 0.944537
-eval mean mIoU (all shapes): 0.944537
-EPOCH 083
+eval_mean_loss: 0.123230
+eval_accuracy: 0.964121
+eval mean mIoU: 0.901153
 ---- EPOCH 083 EVALUATION ----
 000/004
-eval_mean_loss: 0.017875
-eval_accuracy: 0.993340
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.974436
-eval mean mIoU: 0.974436
-eval mean mIoU (all shapes): 0.974436
-EPOCH 084
+eval_mean_loss: 0.096930
+eval_accuracy: 0.968398
+eval mean mIoU: 0.913616
 ---- EPOCH 084 EVALUATION ----
 000/004
-eval_mean_loss: 0.039450
-eval_accuracy: 0.987422
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.963778
-eval mean mIoU: 0.963778
-eval mean mIoU (all shapes): 0.963778
-EPOCH 085
+eval_mean_loss: 0.188132
+eval_accuracy: 0.932559
+eval mean mIoU: 0.842115
 ---- EPOCH 085 EVALUATION ----
 000/004
-eval_mean_loss: 0.023100
-eval_accuracy: 0.991348
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.973873
-eval mean mIoU: 0.973873
-eval mean mIoU (all shapes): 0.973873
-EPOCH 086
+eval_mean_loss: 0.291291
+eval_accuracy: 0.918535
+eval mean mIoU: 0.748720
 ---- EPOCH 086 EVALUATION ----
 000/004
-eval_mean_loss: 0.032772
-eval_accuracy: 0.988027
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.963205
-eval mean mIoU: 0.963205
-eval mean mIoU (all shapes): 0.963205
-EPOCH 087
+eval_mean_loss: 0.977007
+eval_accuracy: 0.852227
+eval mean mIoU: 0.605964
 ---- EPOCH 087 EVALUATION ----
 000/004
-eval_mean_loss: 0.021145
-eval_accuracy: 0.991074
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967362
-eval mean mIoU: 0.967362
-eval mean mIoU (all shapes): 0.967362
-EPOCH 088
+eval_mean_loss: 0.131393
+eval_accuracy: 0.948926
+eval mean mIoU: 0.863514
 ---- EPOCH 088 EVALUATION ----
 000/004
-eval_mean_loss: 0.017011
-eval_accuracy: 0.993516
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.979237
-eval mean mIoU: 0.979237
-eval mean mIoU (all shapes): 0.979237
-EPOCH 089
+eval_mean_loss: 0.053904
+eval_accuracy: 0.984102
+eval mean mIoU: 0.954368
 ---- EPOCH 089 EVALUATION ----
 000/004
-eval_mean_loss: 0.015360
-eval_accuracy: 0.993945
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980814
-eval mean mIoU: 0.980814
-eval mean mIoU (all shapes): 0.980814
-EPOCH 090
+eval_mean_loss: 0.091189
+eval_accuracy: 0.960469
+eval mean mIoU: 0.922162
 ---- EPOCH 090 EVALUATION ----
 000/004
-eval_mean_loss: 0.020048
-eval_accuracy: 0.991133
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.968664
-eval mean mIoU: 0.968664
-eval mean mIoU (all shapes): 0.968664
-EPOCH 091
+eval_mean_loss: 0.092210
+eval_accuracy: 0.967637
+eval mean mIoU: 0.910828
 ---- EPOCH 091 EVALUATION ----
 000/004
-eval_mean_loss: 0.014495
-eval_accuracy: 0.994727
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.982906
-eval mean mIoU: 0.982906
-eval mean mIoU (all shapes): 0.982906
-EPOCH 092
+eval_mean_loss: 0.057595
+eval_accuracy: 0.979258
+eval mean mIoU: 0.940832
 ---- EPOCH 092 EVALUATION ----
 000/004
-eval_mean_loss: 0.015108
-eval_accuracy: 0.994687
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.983479
-eval mean mIoU: 0.983479
-eval mean mIoU (all shapes): 0.983479
-EPOCH 093
+eval_mean_loss: 0.184981
+eval_accuracy: 0.944844
+eval mean mIoU: 0.855696
 ---- EPOCH 093 EVALUATION ----
 000/004
-eval_mean_loss: 0.019266
-eval_accuracy: 0.992188
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.976996
-eval mean mIoU: 0.976996
-eval mean mIoU (all shapes): 0.976996
-EPOCH 094
+eval_mean_loss: 0.177820
+eval_accuracy: 0.946641
+eval mean mIoU: 0.848321
 ---- EPOCH 094 EVALUATION ----
 000/004
-eval_mean_loss: 0.014648
-eval_accuracy: 0.993027
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.976614
-eval mean mIoU: 0.976614
-eval mean mIoU (all shapes): 0.976614
-EPOCH 095
+eval_mean_loss: 0.112563
+eval_accuracy: 0.964180
+eval mean mIoU: 0.902621
 ---- EPOCH 095 EVALUATION ----
 000/004
-eval_mean_loss: 0.024245
-eval_accuracy: 0.990566
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967171
-eval mean mIoU: 0.967171
-eval mean mIoU (all shapes): 0.967171
-EPOCH 096
+eval_mean_loss: 0.319774
+eval_accuracy: 0.889902
+eval mean mIoU: 0.770304
 ---- EPOCH 096 EVALUATION ----
 000/004
-eval_mean_loss: 0.017737
-eval_accuracy: 0.992383
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.975410
-eval mean mIoU: 0.975410
-eval mean mIoU (all shapes): 0.975410
-EPOCH 097
+eval_mean_loss: 0.148239
+eval_accuracy: 0.954121
+eval mean mIoU: 0.878818
 ---- EPOCH 097 EVALUATION ----
 000/004
-eval_mean_loss: 0.018685
-eval_accuracy: 0.991777
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.974812
-eval mean mIoU: 0.974812
-eval mean mIoU (all shapes): 0.974812
-EPOCH 098
+eval_mean_loss: 0.136954
+eval_accuracy: 0.950859
+eval mean mIoU: 0.878480
 ---- EPOCH 098 EVALUATION ----
 000/004
-eval_mean_loss: 0.045377
-eval_accuracy: 0.986836
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.971483
-eval mean mIoU: 0.971483
-eval mean mIoU (all shapes): 0.971483
-EPOCH 099
+eval_mean_loss: 0.095878
+eval_accuracy: 0.961074
+eval mean mIoU: 0.886012
 ---- EPOCH 099 EVALUATION ----
 000/004
-eval_mean_loss: 0.018325
-eval_accuracy: 0.993398
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.979095
-eval mean mIoU: 0.979095
-eval mean mIoU (all shapes): 0.979095
-EPOCH 100
+eval_mean_loss: 0.061372
+eval_accuracy: 0.985234
+eval mean mIoU: 0.958600
 ---- EPOCH 100 EVALUATION ----
 000/004
-eval_mean_loss: 0.024018
-eval_accuracy: 0.990488
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.969654
-eval mean mIoU: 0.969654
-eval mean mIoU (all shapes): 0.969654
-Model saved in file: log/model.ckpt
-EPOCH 101
+eval_mean_loss: 0.266146
+eval_accuracy: 0.937832
+eval mean mIoU: 0.835852
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 101 EVALUATION ----
 000/004
-eval_mean_loss: 0.083739
-eval_accuracy: 0.975684
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.921495
-eval mean mIoU: 0.921495
-eval mean mIoU (all shapes): 0.921495
-EPOCH 102
+eval_mean_loss: 0.237368
+eval_accuracy: 0.938789
+eval mean mIoU: 0.850459
 ---- EPOCH 102 EVALUATION ----
 000/004
-eval_mean_loss: 0.047634
-eval_accuracy: 0.984238
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.946563
-eval mean mIoU: 0.946563
-eval mean mIoU (all shapes): 0.946563
-EPOCH 103
+eval_mean_loss: 0.161408
+eval_accuracy: 0.948945
+eval mean mIoU: 0.872423
 ---- EPOCH 103 EVALUATION ----
 000/004
-eval_mean_loss: 0.047308
-eval_accuracy: 0.985059
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.945972
-eval mean mIoU: 0.945972
-eval mean mIoU (all shapes): 0.945972
-EPOCH 104
+eval_mean_loss: 0.058560
+eval_accuracy: 0.982500
+eval mean mIoU: 0.950688
 ---- EPOCH 104 EVALUATION ----
 000/004
-eval_mean_loss: 0.030390
-eval_accuracy: 0.990293
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.970721
-eval mean mIoU: 0.970721
-eval mean mIoU (all shapes): 0.970721
-EPOCH 105
+eval_mean_loss: 0.109895
+eval_accuracy: 0.951875
+eval mean mIoU: 0.893171
 ---- EPOCH 105 EVALUATION ----
 000/004
-eval_mean_loss: 0.055272
-eval_accuracy: 0.983379
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.935457
-eval mean mIoU: 0.935457
-eval mean mIoU (all shapes): 0.935457
-EPOCH 106
+eval_mean_loss: 0.051983
+eval_accuracy: 0.980449
+eval mean mIoU: 0.949074
 ---- EPOCH 106 EVALUATION ----
 000/004
-eval_mean_loss: 0.060209
-eval_accuracy: 0.979941
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.927730
-eval mean mIoU: 0.927730
-eval mean mIoU (all shapes): 0.927730
-EPOCH 107
+eval_mean_loss: 0.294981
+eval_accuracy: 0.944316
+eval mean mIoU: 0.854568
 ---- EPOCH 107 EVALUATION ----
 000/004
-eval_mean_loss: 0.106604
-eval_accuracy: 0.973672
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.914297
-eval mean mIoU: 0.914297
-eval mean mIoU (all shapes): 0.914297
-EPOCH 108
+eval_mean_loss: 0.114407
+eval_accuracy: 0.960879
+eval mean mIoU: 0.889140
 ---- EPOCH 108 EVALUATION ----
 000/004
-eval_mean_loss: 0.055848
-eval_accuracy: 0.981250
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.937053
-eval mean mIoU: 0.937053
-eval mean mIoU (all shapes): 0.937053
-EPOCH 109
+eval_mean_loss: 0.043138
+eval_accuracy: 0.985566
+eval mean mIoU: 0.961835
 ---- EPOCH 109 EVALUATION ----
 000/004
-eval_mean_loss: 0.074850
-eval_accuracy: 0.985000
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.937767
-eval mean mIoU: 0.937767
-eval mean mIoU (all shapes): 0.937767
-EPOCH 110
+eval_mean_loss: 0.117606
+eval_accuracy: 0.959258
+eval mean mIoU: 0.898490
 ---- EPOCH 110 EVALUATION ----
 000/004
-eval_mean_loss: 0.057557
-eval_accuracy: 0.983984
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.934859
-eval mean mIoU: 0.934859
-eval mean mIoU (all shapes): 0.934859
-EPOCH 111
+eval_mean_loss: 0.076223
+eval_accuracy: 0.975586
+eval mean mIoU: 0.926727
 ---- EPOCH 111 EVALUATION ----
 000/004
-eval_mean_loss: 0.023664
-eval_accuracy: 0.992227
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.969289
-eval mean mIoU: 0.969289
-eval mean mIoU (all shapes): 0.969289
-EPOCH 112
+eval_mean_loss: 0.034716
+eval_accuracy: 0.990156
+eval mean mIoU: 0.972202
 ---- EPOCH 112 EVALUATION ----
 000/004
-eval_mean_loss: 0.029675
-eval_accuracy: 0.988555
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.971358
-eval mean mIoU: 0.971358
-eval mean mIoU (all shapes): 0.971358
-EPOCH 113
+eval_mean_loss: 0.043610
+eval_accuracy: 0.985254
+eval mean mIoU: 0.956806
 ---- EPOCH 113 EVALUATION ----
 000/004
-eval_mean_loss: 0.055883
-eval_accuracy: 0.983125
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.955002
-eval mean mIoU: 0.955002
-eval mean mIoU (all shapes): 0.955002
-EPOCH 114
+eval_mean_loss: 0.079212
+eval_accuracy: 0.968574
+eval mean mIoU: 0.920749
 ---- EPOCH 114 EVALUATION ----
 000/004
-eval_mean_loss: 0.034137
-eval_accuracy: 0.986934
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.946485
-eval mean mIoU: 0.946485
-eval mean mIoU (all shapes): 0.946485
-EPOCH 115
+eval_mean_loss: 0.149363
+eval_accuracy: 0.943047
+eval mean mIoU: 0.896110
 ---- EPOCH 115 EVALUATION ----
 000/004
-eval_mean_loss: 0.056128
-eval_accuracy: 0.980371
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.925964
-eval mean mIoU: 0.925964
-eval mean mIoU (all shapes): 0.925964
-EPOCH 116
+eval_mean_loss: 0.159445
+eval_accuracy: 0.956230
+eval mean mIoU: 0.896679
 ---- EPOCH 116 EVALUATION ----
 000/004
-eval_mean_loss: 0.051655
-eval_accuracy: 0.984395
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.937756
-eval mean mIoU: 0.937756
-eval mean mIoU (all shapes): 0.937756
-EPOCH 117
+eval_mean_loss: 0.093945
+eval_accuracy: 0.973691
+eval mean mIoU: 0.917923
 ---- EPOCH 117 EVALUATION ----
 000/004
-eval_mean_loss: 0.045090
-eval_accuracy: 0.987363
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.943069
-eval mean mIoU: 0.943069
-eval mean mIoU (all shapes): 0.943069
-EPOCH 118
+eval_mean_loss: 0.143737
+eval_accuracy: 0.944980
+eval mean mIoU: 0.865567
 ---- EPOCH 118 EVALUATION ----
 000/004
-eval_mean_loss: 0.060148
-eval_accuracy: 0.985801
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.940475
-eval mean mIoU: 0.940475
-eval mean mIoU (all shapes): 0.940475
-EPOCH 119
+eval_mean_loss: 0.059425
+eval_accuracy: 0.979648
+eval mean mIoU: 0.941993
 ---- EPOCH 119 EVALUATION ----
 000/004
-eval_mean_loss: 0.048221
-eval_accuracy: 0.983672
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.948443
-eval mean mIoU: 0.948443
-eval mean mIoU (all shapes): 0.948443
-EPOCH 120
+eval_mean_loss: 0.078944
+eval_accuracy: 0.971484
+eval mean mIoU: 0.918828
 ---- EPOCH 120 EVALUATION ----
 000/004
-eval_mean_loss: 0.025991
-eval_accuracy: 0.990039
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.964913
-eval mean mIoU: 0.964913
-eval mean mIoU (all shapes): 0.964913
-Model saved in file: log/model.ckpt
-EPOCH 121
+eval_mean_loss: 0.139227
+eval_accuracy: 0.952070
+eval mean mIoU: 0.885361
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 121 EVALUATION ----
 000/004
-eval_mean_loss: 0.047642
-eval_accuracy: 0.989258
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.951611
-eval mean mIoU: 0.951611
-eval mean mIoU (all shapes): 0.951611
-EPOCH 122
+eval_mean_loss: 0.107367
+eval_accuracy: 0.956328
+eval mean mIoU: 0.885517
 ---- EPOCH 122 EVALUATION ----
 000/004
-eval_mean_loss: 0.024776
-eval_accuracy: 0.991191
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.964273
-eval mean mIoU: 0.964273
-eval mean mIoU (all shapes): 0.964273
-EPOCH 123
+eval_mean_loss: 0.039598
+eval_accuracy: 0.987578
+eval mean mIoU: 0.966492
 ---- EPOCH 123 EVALUATION ----
 000/004
-eval_mean_loss: 0.021449
-eval_accuracy: 0.991406
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.968977
-eval mean mIoU: 0.968977
-eval mean mIoU (all shapes): 0.968977
-EPOCH 124
+eval_mean_loss: 0.018452
+eval_accuracy: 0.994414
+eval mean mIoU: 0.982634
 ---- EPOCH 124 EVALUATION ----
 000/004
-eval_mean_loss: 0.023563
-eval_accuracy: 0.990977
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.963255
-eval mean mIoU: 0.963255
-eval mean mIoU (all shapes): 0.963255
-EPOCH 125
+eval_mean_loss: 0.088621
+eval_accuracy: 0.976543
+eval mean mIoU: 0.932856
 ---- EPOCH 125 EVALUATION ----
 000/004
-eval_mean_loss: 0.035031
-eval_accuracy: 0.988789
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.953375
-eval mean mIoU: 0.953375
-eval mean mIoU (all shapes): 0.953375
-EPOCH 126
+eval_mean_loss: 0.077776
+eval_accuracy: 0.975000
+eval mean mIoU: 0.938054
 ---- EPOCH 126 EVALUATION ----
 000/004
-eval_mean_loss: 0.021219
-eval_accuracy: 0.993027
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.972315
-eval mean mIoU: 0.972315
-eval mean mIoU (all shapes): 0.972315
-EPOCH 127
+eval_mean_loss: 0.335178
+eval_accuracy: 0.925352
+eval mean mIoU: 0.772870
 ---- EPOCH 127 EVALUATION ----
 000/004
-eval_mean_loss: 0.019714
-eval_accuracy: 0.991875
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.965518
-eval mean mIoU: 0.965518
-eval mean mIoU (all shapes): 0.965518
-EPOCH 128
+eval_mean_loss: 0.499662
+eval_accuracy: 0.918887
+eval mean mIoU: 0.767597
 ---- EPOCH 128 EVALUATION ----
 000/004
-eval_mean_loss: 0.021284
-eval_accuracy: 0.991504
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.964598
-eval mean mIoU: 0.964598
-eval mean mIoU (all shapes): 0.964598
-EPOCH 129
+eval_mean_loss: 0.082405
+eval_accuracy: 0.974258
+eval mean mIoU: 0.929696
 ---- EPOCH 129 EVALUATION ----
 000/004
-eval_mean_loss: 0.023501
-eval_accuracy: 0.992031
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.966867
-eval mean mIoU: 0.966867
-eval mean mIoU (all shapes): 0.966867
-EPOCH 130
+eval_mean_loss: 0.378336
+eval_accuracy: 0.921035
+eval mean mIoU: 0.793551
 ---- EPOCH 130 EVALUATION ----
 000/004
-eval_mean_loss: 0.038156
-eval_accuracy: 0.991270
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.965076
-eval mean mIoU: 0.965076
-eval mean mIoU (all shapes): 0.965076
-EPOCH 131
+eval_mean_loss: 0.604086
+eval_accuracy: 0.807344
+eval mean mIoU: 0.782402
 ---- EPOCH 131 EVALUATION ----
 000/004
-eval_mean_loss: 0.037857
-eval_accuracy: 0.988262
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.957080
-eval mean mIoU: 0.957080
-eval mean mIoU (all shapes): 0.957080
-EPOCH 132
+eval_mean_loss: 0.569985
+eval_accuracy: 0.800371
+eval mean mIoU: 0.723353
 ---- EPOCH 132 EVALUATION ----
 000/004
-eval_mean_loss: 0.019305
-eval_accuracy: 0.992637
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.972623
-eval mean mIoU: 0.972623
-eval mean mIoU (all shapes): 0.972623
-EPOCH 133
+eval_mean_loss: 0.151031
+eval_accuracy: 0.946465
+eval mean mIoU: 0.877252
 ---- EPOCH 133 EVALUATION ----
 000/004
-eval_mean_loss: 0.055553
-eval_accuracy: 0.986660
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.948325
-eval mean mIoU: 0.948325
-eval mean mIoU (all shapes): 0.948325
-EPOCH 134
+eval_mean_loss: 0.117220
+eval_accuracy: 0.963164
+eval mean mIoU: 0.906984
 ---- EPOCH 134 EVALUATION ----
 000/004
-eval_mean_loss: 0.045236
-eval_accuracy: 0.985879
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.955285
-eval mean mIoU: 0.955285
-eval mean mIoU (all shapes): 0.955285
-EPOCH 135
+eval_mean_loss: 0.107050
+eval_accuracy: 0.964902
+eval mean mIoU: 0.911388
 ---- EPOCH 135 EVALUATION ----
 000/004
-eval_mean_loss: 0.017703
-eval_accuracy: 0.993125
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.974914
-eval mean mIoU: 0.974914
-eval mean mIoU (all shapes): 0.974914
-EPOCH 136
+eval_mean_loss: 0.225783
+eval_accuracy: 0.937910
+eval mean mIoU: 0.867554
 ---- EPOCH 136 EVALUATION ----
 000/004
-eval_mean_loss: 0.021097
-eval_accuracy: 0.991504
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.966141
-eval mean mIoU: 0.966141
-eval mean mIoU (all shapes): 0.966141
-EPOCH 137
+eval_mean_loss: 0.208212
+eval_accuracy: 0.942773
+eval mean mIoU: 0.867431
 ---- EPOCH 137 EVALUATION ----
 000/004
-eval_mean_loss: 0.009892
-eval_accuracy: 0.996328
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.986495
-eval mean mIoU: 0.986495
-eval mean mIoU (all shapes): 0.986495
-EPOCH 138
+eval_mean_loss: 0.261209
+eval_accuracy: 0.912617
+eval mean mIoU: 0.796013
 ---- EPOCH 138 EVALUATION ----
 000/004
-eval_mean_loss: 0.023795
-eval_accuracy: 0.991328
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.970770
-eval mean mIoU: 0.970770
-eval mean mIoU (all shapes): 0.970770
-EPOCH 139
+eval_mean_loss: 0.382117
+eval_accuracy: 0.904121
+eval mean mIoU: 0.769664
 ---- EPOCH 139 EVALUATION ----
 000/004
-eval_mean_loss: 0.013352
-eval_accuracy: 0.995059
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.979158
-eval mean mIoU: 0.979158
-eval mean mIoU (all shapes): 0.979158
-EPOCH 140
+eval_mean_loss: 0.224860
+eval_accuracy: 0.900605
+eval mean mIoU: 0.807161
 ---- EPOCH 140 EVALUATION ----
 000/004
-eval_mean_loss: 0.013604
-eval_accuracy: 0.994961
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.979458
-eval mean mIoU: 0.979458
-eval mean mIoU (all shapes): 0.979458
-Model saved in file: log/model.ckpt
-EPOCH 141
+eval_mean_loss: 0.094267
+eval_accuracy: 0.964063
+eval mean mIoU: 0.908168
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 141 EVALUATION ----
 000/004
-eval_mean_loss: 0.013227
-eval_accuracy: 0.994941
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.977087
-eval mean mIoU: 0.977087
-eval mean mIoU (all shapes): 0.977087
-EPOCH 142
+eval_mean_loss: 0.265076
+eval_accuracy: 0.886660
+eval mean mIoU: 0.798894
 ---- EPOCH 142 EVALUATION ----
 000/004
-eval_mean_loss: 0.009690
-eval_accuracy: 0.996094
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.984922
-eval mean mIoU: 0.984922
-eval mean mIoU (all shapes): 0.984922
-EPOCH 143
+eval_mean_loss: 0.129650
+eval_accuracy: 0.955469
+eval mean mIoU: 0.884936
 ---- EPOCH 143 EVALUATION ----
 000/004
-eval_mean_loss: 0.008347
-eval_accuracy: 0.996934
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.988830
-eval mean mIoU: 0.988830
-eval mean mIoU (all shapes): 0.988830
-EPOCH 144
+eval_mean_loss: 0.084682
+eval_accuracy: 0.970508
+eval mean mIoU: 0.921558
 ---- EPOCH 144 EVALUATION ----
 000/004
-eval_mean_loss: 0.016662
-eval_accuracy: 0.993008
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.977110
-eval mean mIoU: 0.977110
-eval mean mIoU (all shapes): 0.977110
-EPOCH 145
+eval_mean_loss: 0.240492
+eval_accuracy: 0.905762
+eval mean mIoU: 0.850457
 ---- EPOCH 145 EVALUATION ----
 000/004
-eval_mean_loss: 0.019742
-eval_accuracy: 0.991875
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967960
-eval mean mIoU: 0.967960
-eval mean mIoU (all shapes): 0.967960
-EPOCH 146
+eval_mean_loss: 0.052705
+eval_accuracy: 0.979375
+eval mean mIoU: 0.946535
 ---- EPOCH 146 EVALUATION ----
 000/004
-eval_mean_loss: 0.013897
-eval_accuracy: 0.995156
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980339
-eval mean mIoU: 0.980339
-eval mean mIoU (all shapes): 0.980339
-EPOCH 147
+eval_mean_loss: 2.044545
+eval_accuracy: 0.596172
+eval mean mIoU: 0.589431
 ---- EPOCH 147 EVALUATION ----
 000/004
-eval_mean_loss: 0.010069
-eval_accuracy: 0.996230
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.985475
-eval mean mIoU: 0.985475
-eval mean mIoU (all shapes): 0.985475
-EPOCH 148
+eval_mean_loss: 0.232558
+eval_accuracy: 0.915937
+eval mean mIoU: 0.870732
 ---- EPOCH 148 EVALUATION ----
 000/004
-eval_mean_loss: 0.010832
-eval_accuracy: 0.995430
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.982945
-eval mean mIoU: 0.982945
-eval mean mIoU (all shapes): 0.982945
-EPOCH 149
+eval_mean_loss: 0.150035
+eval_accuracy: 0.960176
+eval mean mIoU: 0.890281
 ---- EPOCH 149 EVALUATION ----
 000/004
-eval_mean_loss: 0.013256
-eval_accuracy: 0.994727
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.981296
-eval mean mIoU: 0.981296
-eval mean mIoU (all shapes): 0.981296
-EPOCH 150
+eval_mean_loss: 0.268461
+eval_accuracy: 0.902109
+eval mean mIoU: 0.774218
 ---- EPOCH 150 EVALUATION ----
 000/004
-eval_mean_loss: 0.014893
-eval_accuracy: 0.994609
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.981125
-eval mean mIoU: 0.981125
-eval mean mIoU (all shapes): 0.981125
-EPOCH 151
+eval_mean_loss: 1.341801
+eval_accuracy: 0.710371
+eval mean mIoU: 0.677847
 ---- EPOCH 151 EVALUATION ----
 000/004
-eval_mean_loss: 0.019611
-eval_accuracy: 0.993086
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.971135
-eval mean mIoU: 0.971135
-eval mean mIoU (all shapes): 0.971135
-EPOCH 152
+eval_mean_loss: 0.910574
+eval_accuracy: 0.732187
+eval mean mIoU: 0.661581
 ---- EPOCH 152 EVALUATION ----
 000/004
-eval_mean_loss: 0.021181
-eval_accuracy: 0.992891
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967507
-eval mean mIoU: 0.967507
-eval mean mIoU (all shapes): 0.967507
-EPOCH 153
+eval_mean_loss: 0.989647
+eval_accuracy: 0.759355
+eval mean mIoU: 0.746351
 ---- EPOCH 153 EVALUATION ----
 000/004
-eval_mean_loss: 0.010773
-eval_accuracy: 0.995586
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.982671
-eval mean mIoU: 0.982671
-eval mean mIoU (all shapes): 0.982671
-EPOCH 154
+eval_mean_loss: 0.142186
+eval_accuracy: 0.950918
+eval mean mIoU: 0.861516
 ---- EPOCH 154 EVALUATION ----
 000/004
-eval_mean_loss: 0.025094
-eval_accuracy: 0.990449
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.959733
-eval mean mIoU: 0.959733
-eval mean mIoU (all shapes): 0.959733
-EPOCH 155
+eval_mean_loss: 0.379144
+eval_accuracy: 0.884453
+eval mean mIoU: 0.754767
 ---- EPOCH 155 EVALUATION ----
 000/004
-eval_mean_loss: 0.070374
-eval_accuracy: 0.981055
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.928183
-eval mean mIoU: 0.928183
-eval mean mIoU (all shapes): 0.928183
-EPOCH 156
+eval_mean_loss: 0.500405
+eval_accuracy: 0.850957
+eval mean mIoU: 0.765194
 ---- EPOCH 156 EVALUATION ----
 000/004
-eval_mean_loss: 0.021591
-eval_accuracy: 0.991855
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.972979
-eval mean mIoU: 0.972979
-eval mean mIoU (all shapes): 0.972979
-EPOCH 157
+eval_mean_loss: 0.445963
+eval_accuracy: 0.834688
+eval mean mIoU: 0.675523
 ---- EPOCH 157 EVALUATION ----
 000/004
-eval_mean_loss: 0.021102
-eval_accuracy: 0.993887
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.975391
-eval mean mIoU: 0.975391
-eval mean mIoU (all shapes): 0.975391
-EPOCH 158
+eval_mean_loss: 0.201590
+eval_accuracy: 0.935430
+eval mean mIoU: 0.795898
 ---- EPOCH 158 EVALUATION ----
 000/004
-eval_mean_loss: 0.010563
-eval_accuracy: 0.995898
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.981487
-eval mean mIoU: 0.981487
-eval mean mIoU (all shapes): 0.981487
-EPOCH 159
+eval_mean_loss: 2.507054
+eval_accuracy: 0.417793
+eval mean mIoU: 0.242852
 ---- EPOCH 159 EVALUATION ----
 000/004
-eval_mean_loss: 0.015555
-eval_accuracy: 0.993730
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.973430
-eval mean mIoU: 0.973430
-eval mean mIoU (all shapes): 0.973430
-EPOCH 160
+eval_mean_loss: 11.279534
+eval_accuracy: 0.115977
+eval mean mIoU: 0.122113
 ---- EPOCH 160 EVALUATION ----
 000/004
-eval_mean_loss: 0.009484
-eval_accuracy: 0.995684
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.983889
-eval mean mIoU: 0.983889
-eval mean mIoU (all shapes): 0.983889
-Model saved in file: log/model.ckpt
-EPOCH 161
+eval_mean_loss: 1.178001
+eval_accuracy: 0.659902
+eval mean mIoU: 0.447713
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 161 EVALUATION ----
 000/004
-eval_mean_loss: 0.016841
-eval_accuracy: 0.993887
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.979088
-eval mean mIoU: 0.979088
-eval mean mIoU (all shapes): 0.979088
-EPOCH 162
+eval_mean_loss: 0.134596
+eval_accuracy: 0.953359
+eval mean mIoU: 0.850052
 ---- EPOCH 162 EVALUATION ----
 000/004
-eval_mean_loss: 0.021542
-eval_accuracy: 0.990645
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967886
-eval mean mIoU: 0.967886
-eval mean mIoU (all shapes): 0.967886
-EPOCH 163
+eval_mean_loss: 1.081034
+eval_accuracy: 0.743301
+eval mean mIoU: 0.700625
 ---- EPOCH 163 EVALUATION ----
 000/004
-eval_mean_loss: 0.007051
-eval_accuracy: 0.997500
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.992715
-eval mean mIoU: 0.992715
-eval mean mIoU (all shapes): 0.992715
-EPOCH 164
+eval_mean_loss: 0.390016
+eval_accuracy: 0.853301
+eval mean mIoU: 0.732983
 ---- EPOCH 164 EVALUATION ----
 000/004
-eval_mean_loss: 0.008802
-eval_accuracy: 0.996895
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.990973
-eval mean mIoU: 0.990973
-eval mean mIoU (all shapes): 0.990973
-EPOCH 165
+eval_mean_loss: 0.716372
+eval_accuracy: 0.787441
+eval mean mIoU: 0.614769
 ---- EPOCH 165 EVALUATION ----
 000/004
-eval_mean_loss: 0.009139
-eval_accuracy: 0.996406
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.986343
-eval mean mIoU: 0.986343
-eval mean mIoU (all shapes): 0.986343
-EPOCH 166
+eval_mean_loss: 0.343574
+eval_accuracy: 0.856172
+eval mean mIoU: 0.795885
 ---- EPOCH 166 EVALUATION ----
 000/004
-eval_mean_loss: 0.008790
-eval_accuracy: 0.996445
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.985967
-eval mean mIoU: 0.985967
-eval mean mIoU (all shapes): 0.985967
-EPOCH 167
+eval_mean_loss: 2.132309
+eval_accuracy: 0.403145
+eval mean mIoU: 0.312779
 ---- EPOCH 167 EVALUATION ----
 000/004
-eval_mean_loss: 0.009048
-eval_accuracy: 0.996387
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.987178
-eval mean mIoU: 0.987178
-eval mean mIoU (all shapes): 0.987178
-EPOCH 168
+eval_mean_loss: 8.493879
+eval_accuracy: 0.095137
+eval mean mIoU: 0.043602
 ---- EPOCH 168 EVALUATION ----
 000/004
-eval_mean_loss: 0.023055
-eval_accuracy: 0.993418
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980975
-eval mean mIoU: 0.980975
-eval mean mIoU (all shapes): 0.980975
-EPOCH 169
+eval_mean_loss: 9.235875
+eval_accuracy: 0.174141
+eval mean mIoU: 0.127465
 ---- EPOCH 169 EVALUATION ----
 000/004
-eval_mean_loss: 0.044329
-eval_accuracy: 0.982988
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.948035
-eval mean mIoU: 0.948035
-eval mean mIoU (all shapes): 0.948035
-EPOCH 170
+eval_mean_loss: 2.669591
+eval_accuracy: 0.539082
+eval mean mIoU: 0.480918
 ---- EPOCH 170 EVALUATION ----
 000/004
-eval_mean_loss: 0.042090
-eval_accuracy: 0.984062
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.954086
-eval mean mIoU: 0.954086
-eval mean mIoU (all shapes): 0.954086
-EPOCH 171
+eval_mean_loss: 0.243940
+eval_accuracy: 0.894004
+eval mean mIoU: 0.808100
 ---- EPOCH 171 EVALUATION ----
 000/004
-eval_mean_loss: 0.025566
-eval_accuracy: 0.991016
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.976899
-eval mean mIoU: 0.976899
-eval mean mIoU (all shapes): 0.976899
-EPOCH 172
+eval_mean_loss: 0.269196
+eval_accuracy: 0.882734
+eval mean mIoU: 0.797017
 ---- EPOCH 172 EVALUATION ----
 000/004
-eval_mean_loss: 0.025234
-eval_accuracy: 0.990840
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967924
-eval mean mIoU: 0.967924
-eval mean mIoU (all shapes): 0.967924
-EPOCH 173
+eval_mean_loss: 0.387618
+eval_accuracy: 0.840898
+eval mean mIoU: 0.756695
 ---- EPOCH 173 EVALUATION ----
 000/004
-eval_mean_loss: 0.015344
-eval_accuracy: 0.994668
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.983676
-eval mean mIoU: 0.983676
-eval mean mIoU (all shapes): 0.983676
-EPOCH 174
+eval_mean_loss: 0.081126
+eval_accuracy: 0.973516
+eval mean mIoU: 0.908860
 ---- EPOCH 174 EVALUATION ----
 000/004
-eval_mean_loss: 0.012143
-eval_accuracy: 0.995234
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.983313
-eval mean mIoU: 0.983313
-eval mean mIoU (all shapes): 0.983313
-EPOCH 175
+eval_mean_loss: 0.053595
+eval_accuracy: 0.981758
+eval mean mIoU: 0.933713
 ---- EPOCH 175 EVALUATION ----
 000/004
-eval_mean_loss: 0.007654
-eval_accuracy: 0.997070
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.989767
-eval mean mIoU: 0.989767
-eval mean mIoU (all shapes): 0.989767
-EPOCH 176
+eval_mean_loss: 0.156408
+eval_accuracy: 0.938945
+eval mean mIoU: 0.865730
 ---- EPOCH 176 EVALUATION ----
 000/004
-eval_mean_loss: 0.009789
-eval_accuracy: 0.996895
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.988989
-eval mean mIoU: 0.988989
-eval mean mIoU (all shapes): 0.988989
-EPOCH 177
+eval_mean_loss: 0.308313
+eval_accuracy: 0.908633
+eval mean mIoU: 0.786145
 ---- EPOCH 177 EVALUATION ----
 000/004
-eval_mean_loss: 0.010808
-eval_accuracy: 0.996816
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.986233
-eval mean mIoU: 0.986233
-eval mean mIoU (all shapes): 0.986233
-EPOCH 178
+eval_mean_loss: 0.154361
+eval_accuracy: 0.944688
+eval mean mIoU: 0.843163
 ---- EPOCH 178 EVALUATION ----
 000/004
-eval_mean_loss: 0.007846
-eval_accuracy: 0.996465
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.988364
-eval mean mIoU: 0.988364
-eval mean mIoU (all shapes): 0.988364
-EPOCH 179
+eval_mean_loss: 0.393415
+eval_accuracy: 0.858574
+eval mean mIoU: 0.780540
 ---- EPOCH 179 EVALUATION ----
 000/004
-eval_mean_loss: 0.010843
-eval_accuracy: 0.995605
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.985000
-eval mean mIoU: 0.985000
-eval mean mIoU (all shapes): 0.985000
-EPOCH 180
+eval_mean_loss: 1.390668
+eval_accuracy: 0.674199
+eval mean mIoU: 0.650072
 ---- EPOCH 180 EVALUATION ----
 000/004
-eval_mean_loss: 0.010643
-eval_accuracy: 0.996543
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.987730
-eval mean mIoU: 0.987730
-eval mean mIoU (all shapes): 0.987730
-Model saved in file: log/model.ckpt
-EPOCH 181
+eval_mean_loss: 0.326146
+eval_accuracy: 0.892891
+eval mean mIoU: 0.834767
+Model saved in file: log_eval/model.ckpt
 ---- EPOCH 181 EVALUATION ----
 000/004
-eval_mean_loss: 0.024593
-eval_accuracy: 0.991230
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.975023
-eval mean mIoU: 0.975023
-eval mean mIoU (all shapes): 0.975023
-EPOCH 182
+eval_mean_loss: 0.121761
+eval_accuracy: 0.959102
+eval mean mIoU: 0.884744
 ---- EPOCH 182 EVALUATION ----
 000/004
-eval_mean_loss: 0.012188
-eval_accuracy: 0.994258
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980675
-eval mean mIoU: 0.980675
-eval mean mIoU (all shapes): 0.980675
-EPOCH 183
+eval_mean_loss: 0.189759
+eval_accuracy: 0.924766
+eval mean mIoU: 0.833234
 ---- EPOCH 183 EVALUATION ----
 000/004
-eval_mean_loss: 0.010948
-eval_accuracy: 0.995938
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.985043
-eval mean mIoU: 0.985043
-eval mean mIoU (all shapes): 0.985043
-EPOCH 184
+eval_mean_loss: 0.250619
+eval_accuracy: 0.900273
+eval mean mIoU: 0.812719
 ---- EPOCH 184 EVALUATION ----
 000/004
-eval_mean_loss: 0.014704
-eval_accuracy: 0.994375
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.984956
-eval mean mIoU: 0.984956
-eval mean mIoU (all shapes): 0.984956
-EPOCH 185
+eval_mean_loss: 0.132081
+eval_accuracy: 0.938594
+eval mean mIoU: 0.857045
 ---- EPOCH 185 EVALUATION ----
 000/004
-eval_mean_loss: 0.019587
-eval_accuracy: 0.993184
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980304
-eval mean mIoU: 0.980304
-eval mean mIoU (all shapes): 0.980304
-EPOCH 186
+eval_mean_loss: 0.051245
+eval_accuracy: 0.978184
+eval mean mIoU: 0.946273
 ---- EPOCH 186 EVALUATION ----
 000/004
-eval_mean_loss: 0.026708
-eval_accuracy: 0.990391
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.957326
-eval mean mIoU: 0.957326
-eval mean mIoU (all shapes): 0.957326
-EPOCH 187
+eval_mean_loss: 0.107490
+eval_accuracy: 0.958535
+eval mean mIoU: 0.890749
 ---- EPOCH 187 EVALUATION ----
 000/004
-eval_mean_loss: 0.020545
-eval_accuracy: 0.992969
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.969250
-eval mean mIoU: 0.969250
-eval mean mIoU (all shapes): 0.969250
-EPOCH 188
+eval_mean_loss: 0.039649
+eval_accuracy: 0.983340
+eval mean mIoU: 0.958154
 ---- EPOCH 188 EVALUATION ----
 000/004
-eval_mean_loss: 0.033781
-eval_accuracy: 0.987910
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.967856
-eval mean mIoU: 0.967856
-eval mean mIoU (all shapes): 0.967856
-EPOCH 189
+eval_mean_loss: 0.074953
+eval_accuracy: 0.971289
+eval mean mIoU: 0.940112
 ---- EPOCH 189 EVALUATION ----
 000/004
-eval_mean_loss: 0.038111
-eval_accuracy: 0.984805
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.949476
-eval mean mIoU: 0.949476
-eval mean mIoU (all shapes): 0.949476
-EPOCH 190
+eval_mean_loss: 0.301818
+eval_accuracy: 0.856543
+eval mean mIoU: 0.796972
 ---- EPOCH 190 EVALUATION ----
 000/004
-eval_mean_loss: 0.040652
-eval_accuracy: 0.985723
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.954325
-eval mean mIoU: 0.954325
-eval mean mIoU (all shapes): 0.954325
-EPOCH 191
+eval_mean_loss: 0.124976
+eval_accuracy: 0.964375
+eval mean mIoU: 0.909263
 ---- EPOCH 191 EVALUATION ----
 000/004
-eval_mean_loss: 0.150252
-eval_accuracy: 0.958867
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.916855
-eval mean mIoU: 0.916855
-eval mean mIoU (all shapes): 0.916855
-EPOCH 192
+eval_mean_loss: 1.818790
+eval_accuracy: 0.723477
+eval mean mIoU: 0.699828
 ---- EPOCH 192 EVALUATION ----
 000/004
-eval_mean_loss: 0.034868
-eval_accuracy: 0.990918
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.962320
-eval mean mIoU: 0.962320
-eval mean mIoU (all shapes): 0.962320
-EPOCH 193
+eval_mean_loss: 0.293543
+eval_accuracy: 0.902637
+eval mean mIoU: 0.856978
 ---- EPOCH 193 EVALUATION ----
 000/004
-eval_mean_loss: 0.047249
-eval_accuracy: 0.987109
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.951686
-eval mean mIoU: 0.951686
-eval mean mIoU (all shapes): 0.951686
-EPOCH 194
+eval_mean_loss: 0.147644
+eval_accuracy: 0.960527
+eval mean mIoU: 0.888430
 ---- EPOCH 194 EVALUATION ----
 000/004
-eval_mean_loss: 0.032242
-eval_accuracy: 0.989316
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.960856
-eval mean mIoU: 0.960856
-eval mean mIoU (all shapes): 0.960856
-EPOCH 195
+eval_mean_loss: 0.671644
+eval_accuracy: 0.863398
+eval mean mIoU: 0.615470
 ---- EPOCH 195 EVALUATION ----
 000/004
-eval_mean_loss: 0.018245
-eval_accuracy: 0.993633
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.973374
-eval mean mIoU: 0.973374
-eval mean mIoU (all shapes): 0.973374
-EPOCH 196
+eval_mean_loss: 0.387172
+eval_accuracy: 0.849043
+eval mean mIoU: 0.802794
 ---- EPOCH 196 EVALUATION ----
 000/004
-eval_mean_loss: 0.052600
-eval_accuracy: 0.985898
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.946604
-eval mean mIoU: 0.946604
-eval mean mIoU (all shapes): 0.946604
-EPOCH 197
+eval_mean_loss: 0.239326
+eval_accuracy: 0.919648
+eval mean mIoU: 0.813795
 ---- EPOCH 197 EVALUATION ----
 000/004
-eval_mean_loss: 0.119081
-eval_accuracy: 0.965469
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.933457
-eval mean mIoU: 0.933457
-eval mean mIoU (all shapes): 0.933457
-EPOCH 198
+eval_mean_loss: 0.229708
+eval_accuracy: 0.939961
+eval mean mIoU: 0.860932
 ---- EPOCH 198 EVALUATION ----
 000/004
-eval_mean_loss: 0.020165
-eval_accuracy: 0.991250
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.970224
-eval mean mIoU: 0.970224
-eval mean mIoU (all shapes): 0.970224
-EPOCH 199
+eval_mean_loss: 0.170918
+eval_accuracy: 0.949004
+eval mean mIoU: 0.889625
 ---- EPOCH 199 EVALUATION ----
 000/004
-eval_mean_loss: 0.016644
-eval_accuracy: 0.994219
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.980500
-eval mean mIoU: 0.980500
-eval mean mIoU (all shapes): 0.980500
-EPOCH 200
+eval_mean_loss: 0.165620
+eval_accuracy: 0.945605
+eval mean mIoU: 0.866018
 ---- EPOCH 200 EVALUATION ----
 000/004
-eval_mean_loss: 0.036822
-eval_accuracy: 0.989688
-eval_avg_class_acc: nan
-eval_mIoU_of Raccoon:	 0.956153
-eval mean mIoU: 0.956153
-eval mean mIoU (all shapes): 0.956153
-Model saved in file: log/model.ckpt
+eval_mean_loss: 0.056788
+eval_accuracy: 0.983164
+eval mean mIoU: 0.956662
+Model saved in file: log_eval/model.ckpt
