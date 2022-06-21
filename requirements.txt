@@ -1,5 +1,5 @@
 #Kivy==1.10.1
-numpy==1.16.2
+numpy==1.22.0
 opencv-python==4.1.0.25
 pyrealsense2==2.20.0.721
 cython==0.29.10
